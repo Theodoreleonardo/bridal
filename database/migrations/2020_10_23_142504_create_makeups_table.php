@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateGaunsTable extends Migration
+class CreateMakeupsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,8 @@ class CreateGaunsTable extends Migration
      */
     public function up()
     {
-        Schema::create('gauns', function (Blueprint $table) {
+        Schema::create('makeups', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('nama');
-            $table->string('jenis');
-            $table->int('harga');
             $table->timestamps();
         });
     }
@@ -29,6 +26,6 @@ class CreateGaunsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('gauns');
+        Schema::dropIfExists('makeups');
     }
 }
