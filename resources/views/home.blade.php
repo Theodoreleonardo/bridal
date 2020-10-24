@@ -5,6 +5,8 @@ Home
 @endsection
 
 @section('content')
+<link href="https://fonts.googleapis.com/css2?family=Poppins&family=Viga&display=swap" rel="stylesheet">
+
 <div class="jumbotron jumbotron-fluid">
     <div class="container">
         <h1 class="display-4">At the touch of <span>love</span><br>everyone becomes a <span>poet</span>.</h1>
@@ -47,16 +49,27 @@ Home
             </div>
         </div>
     </section>
-    <!--END testimonial -->
+</div>
+<!--END testimonial -->
+<div class="row" id="contact-us">
 
-
-    <!-- footer -->
-    <div class="row footer">
-        <div class="col text-center">
-            <p>2020 All Right Reserved by GS</p>
+    <div class="col-6">
+        <div class="location">
+            <h1 class="text-center">Location</h1>
         </div>
     </div>
-    <!--END footer -->
+    <div class="col-6">
+        <div class="contact">
+            <h1 class=" text-center">Contact Us</h1>
+        </div>
+    </div>
 </div>
+<!-- footer -->
+<div class="row footer">
+    <div class="col text-center">
+        <p>2020 All Right Reserved by GS</p>
+    </div>
+</div>
+<!--END footer -->
 
 @endsection

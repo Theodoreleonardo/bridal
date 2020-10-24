@@ -132,6 +132,11 @@
     font-size: 14px;
 }
 
+#contact-us {
+    font-family: Poppins;
+    background-color: #99994d;
+}
+
 @media (min-width: 992px) {
     .navbar-brand,
     .nav-link {
