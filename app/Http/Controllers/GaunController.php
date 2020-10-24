@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Gaun;
+use App\Models\Ukurangaun;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class GaunController extends Controller
 {
@@ -47,11 +49,21 @@ class GaunController extends Controller
             'gambar' => 'required',
         ]);
 
-        $destination = "storage/app/public";
-        $gambar = $request->file('gambar');
-        $gambar->move($destination, $gambar->getClientOriginalName());
+        //$destination = "/app/public/images";
+        //$gambar = $request->file('gambar');
+        //$gambar->move($destination, $gambar->getClientOriginalName());
 
-        Gaun::create($request->all());
+        $imgname = $request->gambar->getClientOriginalName() . '-' . time()
+                . '.' . $request->gambar->extension();
+        $request->gambar->move(storage_path('app/public/images'), $imgname);
+
+        //Gaun::create($request->all());
+        Gaun::create([
+            'nama' => $request->nama,
+            'jenis' => $request->jenis,
+            'gambar' => $imgname,
+
+        ]);
         
 
         $gaun = DB::table('gauns')->get();
@@ -121,7 +133,12 @@ class GaunController extends Controller
     public function destroy(Gaun $gaun)
     {
         //
+        //$data = $gaun->id;
+       // dd($gaun->gambar);
         Gaun::destroy($gaun->id);
+        //Storage::delete($gaun->id);
+        Storage::disk('local')->delete('public/images/' . $gaun->gambar);
+        DB::table('ukurangauns')->where('id_gauns',$gaun->id)->delete();
         return redirect('/gaun')->with('Status', 'Selesai Delete Mantap jiwa');
     }
 }
