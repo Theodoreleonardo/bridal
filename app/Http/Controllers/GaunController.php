@@ -47,7 +47,12 @@ class GaunController extends Controller
             'gambar' => 'required',
         ]);
 
+        $destination = "storage/app/public";
+        $gambar = $request->file('gambar');
+        $gambar->move($destination, $gambar->getClientOriginalName());
+
         Gaun::create($request->all());
+        
 
         $gaun = DB::table('gauns')->get();
         foreach ($gaun as $row){

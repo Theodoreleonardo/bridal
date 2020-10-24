@@ -7,7 +7,7 @@
     <div class="row">
     <div class="col-10">
     <h1>Form Tambah Gaun</h1>
-    <form method="POST" action="/admin/gaun">
+    <form method="POST" action="/admin/gaun" enctype="multipart/form-data">
     @csrf
   <div class="form-group">
     <label for="exampleInputEmail1">Nama</label>
@@ -19,7 +19,7 @@
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">gambar</label>
-    <input type="file" value="{{old('gambar')}}" class="form-control @error('gambar') is-invalid @enderror" id="gambar" placeholder="masukan gambar" name="gambar">
+    <input type="file" value="" class="form-control @error('gambar') is-invalid @enderror" id="gambar" name="gambar">
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
