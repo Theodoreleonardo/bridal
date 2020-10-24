@@ -8,4 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Gaun extends Model
 {
     use HasFactory;
+    protected $fillable = ['nama','jenis','gambar'];
 }

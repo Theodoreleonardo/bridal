@@ -15,6 +15,7 @@ class UkurangaunController extends Controller
     public function index()
     {
         //
+        
     }
 
     /**
@@ -35,7 +36,14 @@ class UkurangaunController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'ukuran' => 'required',
+            'deskripsi' => 'required',
+        ]);
         //
+        //dd($request->all());
+        Ukurangaun::create($request->all());
+         return redirect('/gaun')->with('Status', 'Ukuran Berhasil Ditambah');
     }
 
     /**
@@ -69,6 +77,21 @@ class UkurangaunController extends Controller
      */
     public function update(Request $request, Ukurangaun $ukurangaun)
     {
+
+       
+        $validatedData = $request->validate([
+            'ukuran' => 'required',
+            'deskripsi' => 'required',
+        ]);
+         //return ("asd");
+        //dd($request->all());
+        Ukurangaun::where('id', $ukurangaun->id)
+        ->update([
+            'id_gauns'=>$request->id_gauns,
+            'ukuran'=>$request->ukuran,
+            'deskripsi'=>$request->deskripsi,
+        ]);
+        return redirect('/gaun')->with('Status', 'Selesai update Mantap jiwa');
         //
     }
 

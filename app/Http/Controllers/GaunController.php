@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Gaun;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class GaunController extends Controller
 {
@@ -15,6 +16,9 @@ class GaunController extends Controller
     public function index()
     {
         //
+        $gaun = DB::table('gauns')->get();
+        
+        return view('admin.gaun.index', ['gaun' => $gaun]);
     }
 
     /**
@@ -25,6 +29,7 @@ class GaunController extends Controller
     public function create()
     {
         //
+        return view('admin.gaun.create');
     }
 
     /**
@@ -35,6 +40,25 @@ class GaunController extends Controller
      */
     public function store(Request $request)
     {
+        //dd($request);
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'jenis' => 'required',
+            'gambar' => 'required',
+        ]);
+
+        $destination = "storage/app/public";
+        $gambar = $request->file('gambar');
+        $gambar->move($destination, $gambar->getClientOriginalName());
+
+        Gaun::create($request->all());
+        
+
+        $gaun = DB::table('gauns')->get();
+        foreach ($gaun as $row){
+            $data = $row->id;
+        }
+        return view('admin.gaun.ukuran', ['id' => $data])->with('Status', 'Berhasil Ditambah Dan masukan Ukuran');
         //
     }
 
@@ -57,6 +81,7 @@ class GaunController extends Controller
      */
     public function edit(Gaun $gaun)
     {
+        return view('admin.gaun.edit', ['gaun' => $gaun]);
         //
     }
 
@@ -69,7 +94,22 @@ class GaunController extends Controller
      */
     public function update(Request $request, Gaun $gaun)
     {
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'jenis' => 'required',
+            'gambar' => 'required',
+        ]);
         //
+        Gaun::where('id', $gaun->id)
+        ->update([
+            'nama'=>$request->nama,
+            'jenis'=>$request->jenis,
+            'gambar'=>$request->gambar,
+        ]);
+       // dd($request->all());
+        $data = DB::table('ukurangauns')->where('id_gauns', '=', $request->id)->get();
+        //dd($data[0]->id);
+        return view('admin.gaun.editukuran',['data' => $data])->with('Status', 'Selesai update Mantap jiwa');
     }
 
     /**
@@ -81,5 +121,7 @@ class GaunController extends Controller
     public function destroy(Gaun $gaun)
     {
         //
+        Gaun::destroy($gaun->id);
+        return redirect('/gaun')->with('Status', 'Selesai Delete Mantap jiwa');
     }
 }

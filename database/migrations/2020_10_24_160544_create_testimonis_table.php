@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateMakeupsTable extends Migration
+class CreateTestimonisTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,9 @@ class CreateMakeupsTable extends Migration
      */
     public function up()
     {
-        Schema::create('makeups', function (Blueprint $table) {
+        Schema::create('testimonis', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('jenis');
-            $table->string('style');
-            $table->string('string');
+            $table->string('gambar');
             $table->timestamps();
         });
     }
@@ -29,6 +27,6 @@ class CreateMakeupsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('makeups');
+        Schema::dropIfExists('testimonis');
     }
 }

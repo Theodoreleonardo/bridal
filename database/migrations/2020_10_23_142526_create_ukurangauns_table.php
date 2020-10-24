@@ -16,7 +16,8 @@ class CreateUkurangaunsTable extends Migration
         Schema::create('ukurangauns', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->integer('id_gauns');
-            $table->integer('ukuran');
+            $table->string('ukuran');
+            $table->string('deskripsi');
             $table->timestamps();
         });
     }

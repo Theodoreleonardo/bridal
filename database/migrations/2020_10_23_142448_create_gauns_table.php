@@ -17,8 +17,7 @@ class CreateGaunsTable extends Migration
             $table->bigIncrements('id');
             $table->string('nama');
             $table->string('jenis');
-            $table->integer('harga');
-            $table->string('ukuran');
+            $table->string('gambar');
             $table->timestamps();
         });
     }
