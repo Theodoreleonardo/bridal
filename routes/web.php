@@ -29,8 +29,11 @@ Route::delete('/admin/{gaun}', [GaunController::class, 'destroy']);
 Route::post('/admin/ukuran', [UkurangaunController::class, 'store']);
 Route::patch('/ukurangaun/{ukurangaun}', [UkurangaunController::class, 'update']);
 
-// Route::get('/', [CobaController::class, 'index']);
 Route::get('/contact', [ContacController::class, 'index']);
 Route::get('/ukurangaun', [UkurangaunController::class, 'index']);
 Route::get('/baner', [BanerController::class, 'index']);
 Route::get('/gaun', [GaunController::class, 'index']);
+
+
+
+Route::get('/', [HomeController::class, 'index']);
