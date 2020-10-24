@@ -19,7 +19,7 @@ use App\Http\Controllers\UkurangaunController;
 //     return view('admin.gaun');
 // });
 // GAun
-Route::get('/', [GaunController::class, 'index']);
+Route::get('/admin', [GaunController::class, 'index']);
 Route::get('/gaun/create', [GaunController::class, 'create']);
 Route::post('/admin/gaun', [GaunController::class, 'store']);
 Route::get('/{gaun}/edit', [GaunController::class, 'edit']);
