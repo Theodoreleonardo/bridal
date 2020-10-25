@@ -28,6 +28,7 @@
       <td>{{$row->nama}}</td>
       <td>{{$row->jenis}}</td>
       <td>{{$row->gambar}}</td>
+      <td><img class="img-thumbnail" src="storage/images/{{$row->gambar}}"></td>
       <td>
       <a href="{{$row->id}}/edit" class="btn btn-primary">edit</a>
       <form action="/admin/{{$row->id}}" method="post" class="d-inline">
