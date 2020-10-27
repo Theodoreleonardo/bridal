@@ -19,8 +19,18 @@ class GaunController extends Controller
     {
         //
         $gaun = DB::table('gauns')->get();
+        $ukurangaun = DB::table('ukurangauns')->get();
+
+        foreach ($gaun as $row){
+            $id = $row->id;
+        }
+        //dd($id);
         
-        return view('admin.gaun.index', ['gaun' => $gaun]);
+        // $data = DB::table('gauns')
+        //     ->join('ukurangauns', 'gauns.id', '=', 'ukurangauns.id_gauns')
+        //     ->get();
+        // dd($data->all());
+        return view('admin.gaun.index', ['gaun' => $gaun], ['ukurangauns' =>  $ukurangaun]);
     }
 
     /**
@@ -33,13 +43,6 @@ class GaunController extends Controller
         //
         return view('admin.gaun.create');
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(Request $request)
     {
         //dd($request);
@@ -49,15 +52,10 @@ class GaunController extends Controller
             'gambar' => 'required',
         ]);
 
-        //$destination = "/app/public/images";
-        //$gambar = $request->file('gambar');
-        //$gambar->move($destination, $gambar->getClientOriginalName());
-
         $imgname = $request->gambar->getClientOriginalName() . '-' . time()
                 . '.' . $request->gambar->extension();
-        $request->gambar->move(storage_path('app/public/images'), $imgname);
+        $request->gambar->move(storage_path('app/public/images/imggaun'), $imgname);
 
-        //Gaun::create($request->all());
         Gaun::create([
             'nama' => $request->nama,
             'jenis' => $request->jenis,
@@ -65,12 +63,7 @@ class GaunController extends Controller
 
         ]);
         
-
-        $gaun = DB::table('gauns')->get();
-        foreach ($gaun as $row){
-            $data = $row->id;
-        }
-        return view('admin.gaun.ukuran', ['id' => $data])->with('Status', 'Berhasil Ditambah Dan masukan Ukuran');
+        return redirect('/gaun')->with('Status', 'Berhasil Ditambah Dan masukan Ukuran');
         //
     }
 
@@ -83,6 +76,8 @@ class GaunController extends Controller
     public function show(Gaun $gaun)
     {
         //
+       $ukuran = DB::table('ukurangauns')->where('id_gauns',$gaun->id)->get();
+        return view('admin.gaun.show', ['gaun' => $gaun],['ukurangaun' =>  $ukuran]);
     }
 
     /**
@@ -106,22 +101,30 @@ class GaunController extends Controller
      */
     public function update(Request $request, Gaun $gaun)
     {
+ 
         $validatedData = $request->validate([
             'nama' => 'required',
             'jenis' => 'required',
             'gambar' => 'required',
         ]);
         //
+        Storage::disk('local')->delete('public/images/imggaun/' . $gaun->gambar);
+       
+        $imgname = $request->gambar->getClientOriginalName() . '-' . time()
+        . '.' . $request->gambar->extension();
+        $request->gambar->move(storage_path('app/public/images/imggaun'), $imgname);
+
+        
         Gaun::where('id', $gaun->id)
         ->update([
             'nama'=>$request->nama,
             'jenis'=>$request->jenis,
-            'gambar'=>$request->gambar,
+            'gambar'=> $imgname,
         ]);
        // dd($request->all());
-        $data = DB::table('ukurangauns')->where('id_gauns', '=', $request->id)->get();
         //dd($data[0]->id);
-        return view('admin.gaun.editukuran',['data' => $data])->with('Status', 'Selesai update Mantap jiwa');
+        $url = url()->current();;
+        return redirect($url)->with('Status', 'Selesai update Mantap jiwa');
     }
 
     /**
@@ -134,10 +137,9 @@ class GaunController extends Controller
     {
         //
         //$data = $gaun->id;
-       // dd($gaun->gambar);
         Gaun::destroy($gaun->id);
         //Storage::delete($gaun->id);
-        Storage::disk('local')->delete('public/images/' . $gaun->gambar);
+        Storage::disk('local')->delete('public/images/imggaun/' . $gaun->gambar);
         DB::table('ukurangauns')->where('id_gauns',$gaun->id)->delete();
         return redirect('/gaun')->with('Status', 'Selesai Delete Mantap jiwa');
     }

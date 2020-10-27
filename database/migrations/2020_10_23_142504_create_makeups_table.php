@@ -17,7 +17,6 @@ class CreateMakeupsTable extends Migration
             $table->bigIncrements('id');
             $table->string('jenis');
             $table->string('style');
-            $table->string('string');
             $table->timestamps();
         });
     }

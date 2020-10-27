@@ -7,7 +7,7 @@
     <div class="row">
     <div class="col-10">
     <h1>Form Edit Gaun</h1>
-    <form method="POST" action="/gaun/{{$gaun->id}}">
+    <form method="POST" action="/gaun/{{$gaun->id}}" enctype="multipart/form-data">
     @method('patch')
     @csrf
   <div class="form-group">
@@ -19,9 +19,10 @@
     <label for="exampleInputEmail1">jenis</label>
     <input type="Text" value="{{$gaun->jenis}}" class="form-control @error('nama') is-invalid @enderror" id="jenis" placeholder="masukan jenis" name="jenis">
   </div>
+  <input type="hidden" value="{{$gaun->gambar}}"id="gambar"name="gambar">
   <div class="form-group">
     <label for="exampleInputEmail1">gambar</label>
-    <input type="Text" value="{{$gaun->gambar}}" class="form-control @error('gambar') is-invalid @enderror" id="gambar" placeholder="masukan gambar" name="gambar">
+    <input type="file" value="" class="form-control @error('gambar') is-invalid @enderror" id="gambar" name="gambar">
   </div>
 
   <button type="submit" class="btn btn-primary">Submit</button>

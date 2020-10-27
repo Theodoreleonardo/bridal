@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Ukurangaun;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class UkurangaunController extends Controller
 {
@@ -23,9 +24,14 @@ class UkurangaunController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
         //
+        // $gaun = DB::table('gauns')->get();
+        // foreach ($gaun as $row){
+        //     $data = $row->id;
+        // }
+        return view('admin.gaun.ukuran', ['id' => $id])->with('Status', 'Berhasil Ditambah Dan masukan Ukuran');
     }
 
     /**
@@ -42,8 +48,10 @@ class UkurangaunController extends Controller
         ]);
         //
         //dd($request->all());
+        $url = url("/gaun/{$request->id_gauns}");
+      // dd($id);
         Ukurangaun::create($request->all());
-         return redirect('/gaun')->with('Status', 'Ukuran Berhasil Ditambah');
+         return redirect($url)->with('Status', 'Ukuran Berhasil Ditambah');
     }
 
     /**
@@ -65,6 +73,7 @@ class UkurangaunController extends Controller
      */
     public function edit(Ukurangaun $ukurangaun)
     {
+        return view('admin.gaun.editukuran', ['data' => $ukurangaun]);
         //
     }
 
@@ -91,7 +100,8 @@ class UkurangaunController extends Controller
             'ukuran'=>$request->ukuran,
             'deskripsi'=>$request->deskripsi,
         ]);
-        return redirect('/gaun')->with('Status', 'Selesai update Mantap jiwa');
+        $url = url("/gaun/{$ukurangaun->id_gauns}");
+        return redirect($url)->with('Status', 'Selesai update Mantap jiwa');
         //
     }
 
@@ -103,6 +113,9 @@ class UkurangaunController extends Controller
      */
     public function destroy(Ukurangaun $ukurangaun)
     {
-        //
+        $url = url("/gaun/{$ukurangaun->id_gauns}");
+        $id = $ukurangaun->id_gauns;
+        Ukurangaun::destroy($ukurangaun->id);
+        return redirect($url)->with('Status', 'Ukuran Berhasil Dihapus');
     }
 }

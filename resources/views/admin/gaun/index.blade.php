@@ -7,41 +7,22 @@
     <div class="row">
     <div class="col-10">
     <h1>Ini Gaun</h1>
-    <a href="/gaun/create" class="badge badge-info">Tambah data</a>
+    <a href="/gaun/create" class="badge badge-info">Tambar Data Gaun</a>
     <table class="table">
-  <tbody>
-
-  <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">id</th>
-      <th scope="col">nama</th>
-      <th scope="col">jenis</th>
-      <th scope="col">gambar</th>
-      <th scope="col">Tombol</th>
-    </tr>
-  </thead>
+    @if (session('Status'))
+    <div class="alert alert-success">
+      {{session('Status')}}
+    </div>
+    @endif 
   <tbody>
   @foreach($gaun as $row)
-    <tr>
-      <th scope="row">{{$row->id}}</th>
-      <td>{{$row->nama}}</td>
-      <td>{{$row->jenis}}</td>
-      <td>{{$row->gambar}}</td>
-      <td><img class="img-thumbnail" src="storage/images/{{$row->gambar}}"></td>
-      <td>
-      <a href="{{$row->id}}/edit" class="btn btn-primary">edit</a>
-      <form action="/admin/{{$row->id}}" method="post" class="d-inline">
-    @method('delete')
-    @csrf
-    <button type="submit" class="btn btn-danger">delete</button>
-    </form>
-      </td>
-    </tr>
-    @endforeach
-  </tbody>
-</table>
-
+  <ul class="list-group">
+  <li class="list-group-item d-flex justify-content-between align-items-center">
+    {{$row->nama}}
+    <a href="/gaun/{{ $row->id }}" class="badge badge-info">Detail</a>
+  </li>
+</ul>
+   @endforeach
   </tbody>
 </table>
     </div>
