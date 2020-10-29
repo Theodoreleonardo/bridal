@@ -1,5 +1,5 @@
 @extends('layout.app')
-
+<link rel="stylesheet" href="{{ asset('css/home.css') }}">
 @section('title')
 Home
 @endsection
@@ -17,7 +17,7 @@ Home
     <div class="row justify-content-center">
         <div class="col-2 info-panel">
             <div class="row">
-                <div class="col-lg">
+                <div class="col">
                     <h4>Our Work</h4>
                     <a href=""><img src="storage/images/love.png" alt="love"></a>
                 </div>
