@@ -6,7 +6,7 @@
 <div class="contianer">
     <div class="row">
     <div class="col-10">
-    <h1>Ini Gaun</h1>
+    <h1>Gaun</h1>
     <a href="/gaun/create" class="badge badge-info">Tambar Data Gaun</a>
     <table class="table">
     @if (session('Status'))
