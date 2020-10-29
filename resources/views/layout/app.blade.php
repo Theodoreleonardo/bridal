@@ -19,6 +19,8 @@
     <script src="{{ asset('js/bootstrap.min.js') }}"></script>
     <!-- <script type="text/javascript" src="{{ asset('js/script.js') }}"></script> -->
 
+    <link href="{{ asset('lightbox2/dist/css/lightbox.min.css') }}" rel="stylesheet" />
+    <!-- <link href="{{ asset('lightbox/dist/js/lightbox-plus-jquery.min.js') }}" rel="stylesheet" /> -->
     <title>@yield('title')</title>
 
 </head>

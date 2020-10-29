@@ -53,3 +53,4 @@ Route::get('/baner', [BanerController::class, 'index']);
 
 
 Route::get('/', [HomeController::class, 'index']);
+Route::get('/gown', [HomeController::class, 'gown']);
