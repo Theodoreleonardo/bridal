@@ -18,7 +18,7 @@
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">deskripsi</label>
-    <input type="Text" value="{{old('deskripsi')}}" class="form-control @error('nama') is-invalid @enderror" id="deskripsi" placeholder="masukan deskripsi" name="deskripsi">
+    <textarea  type="Text" value="{{old('deskripsi')}}" class="form-control @error('nama') is-invalid @enderror" id="deskripsi" placeholder="masukan deskripsi" name="deskripsi"></textarea>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

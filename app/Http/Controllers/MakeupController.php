@@ -16,6 +16,7 @@ class MakeupController extends Controller
     public function index()
     {
         //
+
         $makeup = DB::table('makeups')->get();
 
         return view('admin.makeup.index', ['makeup' => $makeup]);
@@ -29,6 +30,7 @@ class MakeupController extends Controller
     public function create()
     {
         //
+        return view('admin.makeup.create');
     }
 
     /**
@@ -39,18 +41,41 @@ class MakeupController extends Controller
      */
     public function store(Request $request)
     {
+        $validatedData = $request->validate([
+            'jenis' => 'required',
+            'style' => 'required',
+        ]);
+
+        Makeup::create([
+            'jenis' => $request->jenis,
+            'style' => $request->style,
+        ]);
+
+        return redirect('/makeup')->with('Status', 'Berhasil Ditambah');
         //
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Makeup  $makeup
-     * @return \Illuminate\Http\Response
-     */
+
     public function show(Makeup $makeup)
     {
         //
+        $term = $makeup->id;
+        // $term = '3';
+
+        if ($term == '1') {
+            dd('asuk 1');
+            $data = DB::table('makeups')->where('jenis', 'Wedding')->get();
+            return view('admin.makeup.show', ['makeup' => $data]);
+        } else if ($term == '2') {
+            dd('asuk 2');
+            $data = DB::table('makeups')->where('jenis', 'party')->get();
+            return view('admin.makeup.show', ['makeup' => $data]);
+        } else if ($term == '3') {
+            dd('asuk 3');
+            $data = DB::table('makeups')->where('jenis', 'Commercial Photoshoot
+            ')->get();
+            return view('admin.makeup.show', ['makeup' => $data]);
+        }
     }
 
     /**
@@ -62,6 +87,7 @@ class MakeupController extends Controller
     public function edit(Makeup $makeup)
     {
         //
+        return view('admin.makeup.edit', ['makeup' => $makeup]);
     }
 
     /**
@@ -74,6 +100,20 @@ class MakeupController extends Controller
     public function update(Request $request, Makeup $makeup)
     {
         //
+        $validatedData = $request->validate([
+            'jenis' => 'required',
+            'style' => 'required',
+        ]);
+        //
+        Makeup::where('id', $makeup->id)
+            ->update([
+                'jenis' => $request->jenis,
+                'style' => $request->style,
+            ]);
+        // dd($request->all());
+        //dd($data[0]->id);
+        $url = url()->previous();
+        return redirect($url)->with('Status', 'Selesai update Mantap jiwa');
     }
 
     /**
@@ -84,6 +124,10 @@ class MakeupController extends Controller
      */
     public function destroy(Makeup $makeup)
     {
-        //
+
+
+        $url = url()->previous();
+        Makeup::destroy($makeup->id);
+        return redirect($url)->with('Status', 'Makeup Berhasil Dihapus');
     }
 }

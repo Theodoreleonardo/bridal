@@ -19,7 +19,7 @@
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">deskripsi</label>
-    <input type="Text" value="{{$data->deskripsi}}" class="form-control @error('nama') is-invalid @enderror" id="deskripsi" placeholder="masukan deskripsi" name="deskripsi">
+    <input type="Text" value="{{$data->deskripsi}}" class="form-control @error('nama') is-invalid @enderror" id="deskripsi" placeholder="masukan deskripsi" name="deskripsi"></input>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

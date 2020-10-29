@@ -38,8 +38,12 @@ Route::delete('/admin/ukurangaun/{ukurangaun}', [UkurangaunController::class, 'd
 Route::patch('/gambargaun/{gambargaun}', [GambargaunController::class, 'store']);
 //Makeup
 Route::get('/makeup', [MakeupController::class, 'index']);
-
-
+Route::get('admin/makeup/{makeup}', [MakeupController::class, 'show']);
+Route::get('/makeup/create', [MakeupController::class, 'create']);
+Route::post('/admin/makeup', [MakeupController::class, 'store']);
+Route::get('/{makeup}/edit/makeup', [MakeupController::class, 'edit']);
+Route::post('/admin/makeup/{makeup}', [MakeupController::class, 'update']);
+Route::delete('/admin/makeup/{makeup}', [MakeupController::class, 'destroy']);
 
 Route::get('/contact', [ContacController::class, 'index']);
 Route::get('/ukurangaun', [UkurangaunController::class, 'index']);

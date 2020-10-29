@@ -17,7 +17,7 @@ class CreateUkurangaunsTable extends Migration
             $table->bigIncrements('id');
             $table->integer('id_gauns');
             $table->string('ukuran');
-            $table->string('deskripsi');
+            $table->string('deskripsi', 255);
             $table->timestamps();
         });
     }

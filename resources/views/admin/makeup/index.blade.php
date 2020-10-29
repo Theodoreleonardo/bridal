@@ -4,43 +4,38 @@
 
 @section('container')
 <div class="contianer">
-    <div class="row">
+  <div class="row">
     <div class="col-10">
-    <h1>Ini MakeUp</h1>
-    <a href="/gaun/create" class="badge badge-info">Tambah data</a>
-    <table class="table">
-  <tbody>
-
-  <table class="table">
-  <thead>
-    <tr>
-      <th scope="col">id</th>
-      <th scope="col">jenis</th>
-      <th scope="col">style</th>
-    </tr>
-  </thead>
-  <tbody>
-  @foreach($makeup as $row)
-    <tr>
-      <th scope="row">{{$row->id}}</th>
-      <td>{{$row->jenis}}</td>
-      <td>{{$row->style}}</td>
-      <td>
-      <a href="{{$row->id}}/edit" class="btn btn-primary">edit</a>
-      <form action="/admin/{{$row->id}}" method="post" class="d-inline">
-    @method('delete')
-    @csrf
-    <button type="submit" class="btn btn-danger">delete</button>
-    </form>
-      </td>
-    </tr>
-    @endforeach
-  </tbody>
-</table>
-
-  </tbody>
-</table>
+      <h1>Make Up</h1>
+      <a href="/makeup/create" class="badge badge-info">Tambar Data Make UP</a>
+      <table class="table">
+        @if (session('Status'))
+        <div class="alert alert-success">
+          {{session('Status')}}
+        </div>
+        @endif
+        <tbody>
+          <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Wedding
+              <a href="/admin/makeup/1" class="badge badge-info">Detail</a>
+            </li>
+          </ul>
+          <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Party
+              <a href="/admin/makeup/2" class="badge badge-info">Detail</a>
+            </li>
+          </ul>
+          <ul class="list-group">
+            <li class="list-group-item d-flex justify-content-between align-items-center">
+              Commercial Photoshoot
+              <a href="/admin/makeup/{{ 3 }}" class="badge badge-info">Detail</a>
+            </li>
+          </ul>
+        </tbody>
+      </table>
     </div>
-    </div>
+  </div>
 </div>
 @endsection
