@@ -17,7 +17,7 @@ class MakeupController extends Controller
     {
         //
         $makeup = DB::table('makeups')->get();
-        
+
         return view('admin.makeup.index', ['makeup' => $makeup]);
     }
 

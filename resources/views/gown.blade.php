@@ -44,22 +44,18 @@ Gown
     <button data-filter=".ball">Ball Gown</button>
 </div>
 <div class="image-gallery">
-    <!-- <a href="storage/slider/ntr1.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image mermaid" src="storage/slider/ntr1.jpg" alt="" /><span></span></a>
+    <a href="storage/slider/ntr1.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image mermaid" src="storage/slider/ntr1.jpg" alt="" /><span></span></a>
     <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
     <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
     <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
-    <a href="storage/slider/gbr1.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image mermaid" src="storage/slider/gbr1.png" alt="" /><span></span></a> -->
-
-    <img class="example-image mermaid" src="storage/slider/gbr1.png" alt="" />
-    <img class="example-image mermaid" src="storage/slider/gbr1.png" alt="" />
-    <img class="example-image mermaid" src="storage/slider/gbr1.png" alt="" />
-    <img class="example-image mermaid" src="storage/slider/gbr1.png" alt="" />
+    <a href="storage/slider/gbr1.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image mermaid" src="storage/slider/gbr1.png" alt="" /><span></span></a>
 </div>
 
 
 <script src="{{ asset('lightbox2/dist/js/lightbox.min.js') }}"></script>
 <script src="{{ asset('js/isotope.pkgd.min.js') }}"></script>
 <script src="{{ asset('js/isotope.pkgd.js') }}"></script>
+<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
 <script>
     $(document).ready(function() {
         var isIsotopeInit = false;
@@ -74,8 +70,20 @@ Gown
 
         // var $grid = $('.image-gallery').isotope({
         //     itemSelector: '.example-image',
-        //     layoutMode: 'fitRows'
+        //     layoutMode: 'fitRows',
+        //     fitRows: {
+        //         gutter: 10
+        //     },
         // });
+
+        var $grid = $('.image-gallery').isotope({
+            itemSelector: '.example-image',
+            masonry: {
+                columnWidth: '.image-gallery img',
+                isFitWidth: true,
+                gutter: 10
+            }
+        });
 
         $('.filter-button-group').on('click', 'button', function() {
             $(".filter-button-group button").removeClass('active');

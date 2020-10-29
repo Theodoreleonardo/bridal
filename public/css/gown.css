@@ -108,12 +108,17 @@ html {
     background-color: brown;
 }
 
-.image-gallery {
+/* .image-gallery {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(50px, 100px));
     justify-content: center;
     align-items: center;
     gap: 10px;
+    margin: auto;
+} */
+
+.image-gallery {
+    margin: 0 auto; /* centered */
 }
 
 .image-gallery img,
@@ -123,8 +128,13 @@ html {
     background-size: cover;
     background-position: center;
     text-align: center;
+    margin-bottom: 10px;
 }
 
+.image-gallery p {
+    position: absolute;
+    z-index: 88;
+}
 /* //////////////////////////////////////////////////////////////////////////////// pc */
 @media (min-width: 992px) {
     .navbar-brand,
@@ -173,10 +183,10 @@ html {
         font-size: 20px;
     }
 
-    .image-gallery {
+    /* .image-gallery {
         grid-template-columns: repeat(auto-fit, minmax(50px, 300px));
         gap: 10px;
-    }
+    } */
 
     .image-gallery img {
         width: 300px;
@@ -233,10 +243,10 @@ html {
         font-size: 20px;
     }
 
-    .image-gallery {
+    /* .image-gallery {
         grid-template-columns: repeat(auto-fit, minmax(50px, 300px));
         gap: 10px;
-    }
+    } */
 
     .image-gallery img,
     .image-gallery a {
