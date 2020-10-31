@@ -4,6 +4,7 @@ Gown
 @endsection
 <link rel="stylesheet" href="{{ asset('css/gown.css') }}">
 <link rel="stylesheet" href="{{ asset('icofont/icofont.min.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Poppins&family=Viga&display=swap" rel="stylesheet">
 @section('content')
 
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -44,18 +45,25 @@ Gown
     <button data-filter=".ball">Ball Gown</button>
 </div>
 <div class="image-gallery">
-    <a href="storage/slider/ntr1.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image mermaid" src="storage/slider/ntr1.jpg" alt="" /><span></span></a>
+    <a href="storage/slider/ntr1.jpg" data-lightbox="example-set" data-title="mermaid"><img class="example-image mermaid" src="storage/slider/ntr1.jpg" alt="" /><span></span></a>
     <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
     <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
     <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
     <a href="storage/slider/gbr1.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image mermaid" src="storage/slider/gbr1.png" alt="" /><span></span></a>
+    <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
+    <a href="storage/slider/gbr1.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image mermaid" src="storage/slider/gbr1.png" alt="" /><span></span></a>
+    <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
+    <a href="storage/slider/gbr1.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image mermaid" src="storage/slider/gbr1.png" alt="" /><span></span></a>
+    <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
+
 </div>
 
 
 <script src="{{ asset('lightbox2/dist/js/lightbox.min.js') }}"></script>
 <script src="{{ asset('js/isotope.pkgd.min.js') }}"></script>
 <script src="{{ asset('js/isotope.pkgd.js') }}"></script>
-<script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script>
+<script src="{{ asset('js/masonry.pkgd.min.js') }}"></script>
+<!-- <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script> -->
 <script>
     $(document).ready(function() {
         var isIsotopeInit = false;
@@ -64,17 +72,9 @@ Gown
             'resizeDuration': 200,
             'wrapAround': true,
             'disableScrolling': true,
-            'positionFromTop': 100,
+            'positionFromTop': 10,
             'alwaysShowNavOnTouchDevices': true
         })
-
-        // var $grid = $('.image-gallery').isotope({
-        //     itemSelector: '.example-image',
-        //     layoutMode: 'fitRows',
-        //     fitRows: {
-        //         gutter: 10
-        //     },
-        // });
 
         var $grid = $('.image-gallery').isotope({
             itemSelector: '.example-image',
@@ -94,6 +94,21 @@ Gown
             });
         });
 
+        //image - hoverrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr
+        //     $('.example-image').mouseenter(function() {
+        //         $(this).next().text('rasanya amjimngg banget');
+        //         $(this).next().css({
+        //             'display': 'block'
+        //         })
+        //     });
+
+
+        //     $('.example-image').mouseleave(function() {
+        //         $(this).next().text('');
+        //         $(this).next().css({
+        //             'display': 'none'
+        //         })
+        //     });
     });
 </script>
 @endsection
