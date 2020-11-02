@@ -52,7 +52,7 @@ class MakeupController extends Controller
         ]);
 
         return redirect('/makeup')->with('Status', 'Berhasil Ditambah');
-        //
+        //asd
     }
 
 
