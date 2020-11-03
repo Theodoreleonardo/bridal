@@ -6,6 +6,8 @@ use App\Http\Controllers\GaunController;
 use App\Http\Controllers\UkurangaunController;
 use App\Http\Controllers\GambargaunController;
 use App\Http\Controllers\MakeupController;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\RegisterController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -17,9 +19,18 @@ use App\Http\Controllers\MakeupController;
 |
 */
 
-// Route::get('/', function () {
-//     return view('admin.gaun');
+// Route::get('/login', function () {
+//     return view('admin.login');
 // });
+
+//login
+Route::get('/admin/login/', [AuthController::class, 'index'])->name('login');
+Route::post('/admin/login/', [AuthController::class, 'login']);
+//register
+Route::get('/admin/register/', [RegisterController::class, 'index']);
+Route::post('/admin/register/', [RegisterController::class, 'store']);
+
+Route::Group(['middleware' => 'auth'], function () {
 // Gaun
 Route::get('/gaun/create', [GaunController::class, 'create']);
 Route::post('/admin/gaun', [GaunController::class, 'store']);
@@ -45,6 +56,15 @@ Route::get('/{makeup}/edit/makeup', [MakeupController::class, 'edit']);
 Route::post('/admin/makeup/{makeup}', [MakeupController::class, 'update']);
 Route::delete('/admin/makeup/{makeup}', [MakeupController::class, 'destroy']);
 
+//login
+Route::get('/admin/logout/', [AuthController::class, 'logout']);
+});
+
+
+
+
+
+
 Route::get('/contact', [ContacController::class, 'index']);
 Route::get('/ukurangaun', [UkurangaunController::class, 'index']);
 Route::get('/baner', [BanerController::class, 'index']);
@@ -54,3 +74,4 @@ Route::get('/baner', [BanerController::class, 'index']);
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/gown', [HomeController::class, 'gown']);
+

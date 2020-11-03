@@ -28,6 +28,12 @@
                        <li class="nav-item">
                           <a class="nav-link" href="{{ url('/gaun') }}">Gaun</a>
                     </li>
+                    <li class="nav-item">
+                          <a class="nav-link" href="{{ url('/admin/register') }}">Register</a>
+                    </li>
+                    <li class="nav-item">
+                          <a class="nav-link" href="{{ url('/admin/logout') }}">logout</a>
+                    </li>
                 <li class="nav-item">
         <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
                     </li>
