@@ -16,10 +16,10 @@ class MakeupController extends Controller
     public function index()
     {
         //
+        $id = 2;
+       // $makeup = DB::table('makeups')->get();
 
-        $makeup = DB::table('makeups')->get();
-
-        return view('admin.makeup.index', ['makeup' => $makeup]);
+        return view('admin.makeup.index',['id' => $id]);
     }
 
     /**
@@ -58,22 +58,19 @@ class MakeupController extends Controller
 
     public function show(Makeup $makeup)
     {
-        //
-        $term = $makeup->id;
-        // $term = '3';
 
-        if ($term == '1') {
-            dd('asuk 1');
+    }
+
+    public function route($id){
+       // dd($id);
+        if ($id == '1') {
             $data = DB::table('makeups')->where('jenis', 'Wedding')->get();
             return view('admin.makeup.show', ['makeup' => $data]);
-        } else if ($term == '2') {
-            dd('asuk 2');
+        } else if ($id == '2') {
             $data = DB::table('makeups')->where('jenis', 'party')->get();
             return view('admin.makeup.show', ['makeup' => $data]);
-        } else if ($term == '3') {
-            dd('asuk 3');
-            $data = DB::table('makeups')->where('jenis', 'Commercial Photoshoot
-            ')->get();
+        } else if ($id == '3') {
+            $data = DB::table('makeups')->where('jenis', 'Commercial Photoshoot')->get();
             return view('admin.makeup.show', ['makeup' => $data]);
         }
     }
@@ -112,8 +109,8 @@ class MakeupController extends Controller
             ]);
         // dd($request->all());
         //dd($data[0]->id);
-        $url = url()->previous();
-        return redirect($url)->with('Status', 'Selesai update Mantap jiwa');
+        //$url = url()->previous();
+        return redirect('/makeup')->with('Status', 'Selesai update Mantap jiwa');
     }
 
     /**

@@ -30,7 +30,7 @@
           <ul class="list-group">
             <li class="list-group-item d-flex justify-content-between align-items-center">
               Commercial Photoshoot
-              <a href="/admin/makeup/{{ 3 }}" class="badge badge-info">Detail</a>
+              <a href="/admin/makeup/3" class="badge badge-info">Detail</a>
             </li>
           </ul>
         </tbody>
