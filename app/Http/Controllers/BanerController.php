@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Baner;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class BanerController extends Controller
 {
@@ -14,6 +16,8 @@ class BanerController extends Controller
      */
     public function index()
     {
+        $data = DB::table('baners')->get();
+        return view('admin.baner.index', ['baner' => $data]);
         //
     }
 
@@ -25,6 +29,7 @@ class BanerController extends Controller
     public function create()
     {
         //
+        return view('admin.baner.create');
     }
 
     /**
@@ -36,6 +41,21 @@ class BanerController extends Controller
     public function store(Request $request)
     {
         //
+                //dd($request);
+                $validatedData = $request->validate([
+                    'gambar' => 'required',
+                ]);
+        
+                $imgname = $request->gambar->getClientOriginalName() . '-' . time()
+                        . '.' . $request->gambar->extension();
+                $request->gambar->move(storage_path('app/public/images/imgbaner'), $imgname);
+        
+                Baner::create([
+                    'gambar' => $imgname,
+        
+                ]);
+                
+                return redirect('/baners')->with('Status', 'Berhasil Ditambah');
     }
 
     /**
@@ -81,5 +101,10 @@ class BanerController extends Controller
     public function destroy(Baner $baner)
     {
         //
+                //$data = $gaun->id;
+        Baner::destroy($baner->id);
+        //Storage::delete($gaun->id);
+        Storage::disk('local')->delete('public/images/imgbaner/' . $baner->gambar);
+        return redirect('/baners')->with('Status', 'Berhasil Delete');
     }
 }

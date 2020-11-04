@@ -19,11 +19,11 @@ class GaunController extends Controller
     {
         //
         $gaun = DB::table('gauns')->get();
-        $ukurangaun = DB::table('ukurangauns')->get();
+        // $ukurangaun = DB::table('ukurangauns')->get();
 
-        foreach ($gaun as $row){
-            $id = $row->id;
-        }
+        // foreach ($gaun as $row){
+        //     $id = $row->id;
+        // }
         //dd($id);
         
         // $data = DB::table('gauns')

@@ -8,6 +8,10 @@ use App\Http\Controllers\GambargaunController;
 use App\Http\Controllers\MakeupController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Controllers\BanerController;
+use App\Http\Controllers\GaleriController;
+use App\Http\Controllers\TestimoniController;
+use App\Http\Controllers\ContactController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -40,6 +44,7 @@ Route::delete('/admin/{gaun}', [GaunController::class, 'destroy']);
 Route::get('/gaun', [GaunController::class, 'index']);
 Route::get('/gaun/{gaun}', [GaunController::class, 'show']);
 //Ukuran Gaun
+Route::get('/ukurangaun', [UkurangaunController::class, 'index']);
 Route::post('/admin/ukuran', [UkurangaunController::class, 'store']);
 Route::patch('/ukurangaun/{ukurangaun}', [UkurangaunController::class, 'update']);
 Route::get('/admin/ukuran/{id}', [UkurangaunController::class, 'create']);
@@ -58,19 +63,35 @@ Route::delete('/admin/makeup/{makeup}', [MakeupController::class, 'destroy']);
 
 //login
 Route::get('/admin/logout/', [AuthController::class, 'logout']);
+
+
+//Baner
+Route::get('/baners', [BanerController::class, 'index']);
+Route::get('/admin/baners', [BanerController::class, 'create']);
+Route::post('/admin/baners', [BanerController::class, 'store']);
+Route::delete('/admin/baners/{baner}', [BanerController::class, 'destroy']);
+
+//testimoni
+Route::get('/testimoni', [TestimoniController::class, 'index']);
+Route::get('/admin/testimoni', [TestimoniController::class, 'create']);
+Route::post('/admin/testimoni', [TestimoniController::class, 'store']);
+Route::delete('/admin/testimoni/{testimoni}', [TestimoniController::class, 'destroy']);
+
+//galeri
+Route::get('/galeri', [GaleriController::class, 'index']);
+Route::get('/admin/galeri', [GaleriController::class, 'create']);
+Route::post('/admin/galeri', [GaleriController::class, 'store']);
+Route::delete('/admin/galeri/{galeri}', [GaleriController::class, 'destroy']);
+
+//contact
+Route::get('/contact', [ContactController::class, 'index']);
+Route::get('/admin/contact', [ContactController::class, 'create']);
+Route::post('/admin/contact', [ContactController::class, 'store']);
+Route::get('/{contact}/contact', [ContactController::class, 'edit']);
+Route::delete('/admin/contact/{contact}', [ContactController::class, 'destroy']);
+Route::post('/admin/contact/{contact}', [ContactController::class, 'update']);
+
 });
-
-
-
-
-
-
-Route::get('/contact', [ContacController::class, 'index']);
-Route::get('/ukurangaun', [UkurangaunController::class, 'index']);
-Route::get('/baner', [BanerController::class, 'index']);
-
-
-
 
 Route::get('/', [HomeController::class, 'index']);
 Route::get('/gown', [HomeController::class, 'gown']);

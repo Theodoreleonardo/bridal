@@ -29,13 +29,22 @@
                           <a class="nav-link" href="{{ url('/gaun') }}">Gaun</a>
                     </li>
                     <li class="nav-item">
+                          <a class="nav-link" href="{{ url('/baners') }}">Baners</a>
+                    </li>
+                    <li class="nav-item">
+                          <a class="nav-link" href="{{ url('/galeri') }}">Galeri</a>
+                    </li>
+                    <li class="nav-item">
+                          <a class="nav-link" href="{{ url('/contact') }}">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                          <a class="nav-link" href="{{ url('/testimoni') }}">Testimoni</a>
+                    </li>
+                    <li class="nav-item">
                           <a class="nav-link" href="{{ url('/admin/register') }}">Register</a>
                     </li>
                     <li class="nav-item">
-                          <a class="nav-link" href="{{ url('/admin/logout') }}">logout</a>
-                    </li>
-                <li class="nav-item">
-        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                          <a class="nav-link" href="{{ url('/admin/logout') }}">Logout</a>
                     </li>
                 </ul>
                  </div>

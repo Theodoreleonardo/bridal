@@ -4,8 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Contact;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
-class ContacController extends Controller
+class ContactController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,6 +17,8 @@ class ContacController extends Controller
     public function index()
     {
         //
+        $data = DB::table('contacts')->get();
+        return view('admin.contact.index', ['contact' => $data]);
     }
 
     /**
@@ -25,6 +29,7 @@ class ContacController extends Controller
     public function create()
     {
         //
+        return view('admin.contact.create');
     }
 
     /**
@@ -36,6 +41,17 @@ class ContacController extends Controller
     public function store(Request $request)
     {
         //
+        
+        $validatedData = $request->validate([
+            'text' => 'required',
+        ]);
+
+        Contact::create([
+            'text' => $request->text,
+
+        ]);
+        
+        return redirect('/contact')->with('Status', 'Berhasil Ditambah Dan masukan Ukuran');
     }
 
     /**
@@ -58,6 +74,7 @@ class ContacController extends Controller
     public function edit(Contact $contact)
     {
         //
+        return view('admin.contact.edit', ['contact' => $contact]);
     }
 
     /**
@@ -70,6 +87,14 @@ class ContacController extends Controller
     public function update(Request $request, Contact $contact)
     {
         //
+        $validatedData = $request->validate([
+            'text' => 'required',
+        ]);
+        Contact::where('id', $contact->id)
+        ->update([
+            'text'=>$request->text,
+        ]);
+        return redirect('/contact')->with('Status', 'Selesai update Mantap jiwa');
     }
 
     /**
@@ -81,5 +106,7 @@ class ContacController extends Controller
     public function destroy(Contact $contact)
     {
         //
+        Contact::destroy($contact->id);
+        return redirect('/contact')->with('Status', 'Berhasil Delete');
     }
 }
