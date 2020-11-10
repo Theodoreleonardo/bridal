@@ -194,6 +194,199 @@ h5.sub-kanan {
     display: none;
 }
 
+.testi,
+.gown {
+    margin-bottom: 10%;
+}
+
+.gambar {
+    position: relative;
+}
+
+.judul {
+    display: block;
+    text-align: center;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.testi1 {
+    width: 180px;
+    height: 240px;
+    border-radius: 8px;
+}
+
+.testi2 {
+    width: 240px;
+    height: 180px;
+    border-radius: 8px;
+    position: absolute;
+    margin-top: 10%;
+    left: 15%;
+    z-index: 99;
+    box-shadow: 10px 5px 15px 0px #888888;
+}
+
+.gown1 {
+    width: 180px;
+    height: 240px;
+    border-radius: 8px;
+    text-align: center;
+}
+
+.gown2 {
+    height: 240px;
+    width: 180px;
+    border-radius: 8px;
+    position: absolute;
+    right: 0;
+    z-index: 99;
+}
+
+/* //////////////////////////////////////////////////////////////////////////////// tablet */
+@media (min-width: 577px) {
+    .navbar-brand,
+    .nav-link {
+        color: white !important;
+        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
+    }
+    .nav-link {
+        text-transform: uppercase;
+        margin-right: 30px;
+    }
+
+    .nav-link:hover::after {
+        content: "";
+        display: block;
+        border-bottom: 3px solid blue;
+        width: 50%;
+        margin: auto;
+        margin-top: -3px;
+    }
+
+    .jumbotron {
+        margin-top: -75px;
+        height: 600px;
+    }
+
+    .jumbotron .display-4 {
+        margin-top: 200px;
+        font-size: 50px;
+    }
+
+    .info-panel h4 {
+        font-size: 20px;
+    }
+
+    .info-panel img {
+        text-align: center;
+        margin-top: -12px;
+        width: 60px;
+        height: 60px;
+    }
+
+    .info-panel {
+        margin-top: -80px;
+    }
+
+    .testimonial {
+        margin-top: 60px;
+    }
+
+    .testimonial h5 {
+        font-size: 22px;
+    }
+
+    .testimonial figure img {
+        width: 80px;
+        margin: 20px 15px 5px;
+    }
+
+    .testimonial figure img.aktif {
+        width: 120px;
+    }
+
+    .testimonial figure .figure-caption {
+        font-size: 16px;
+    }
+
+    .footer {
+        font-size: 20px;
+    }
+
+    .responsive-iframe {
+        width: 450px;
+        height: 400px;
+    }
+
+    #contact-us {
+        margin-top: 50px;
+    }
+    #contact-us h1 {
+        font-size: 30px;
+    }
+
+    .location p {
+        font-size: 20px;
+    }
+
+    .location p.up {
+        margin-top: -20px;
+    }
+    .location h1,
+    .contact h1 {
+        /* box-shadow: 0 3px 20px rgba(0, 0, 0, 0.5); */
+        font-size: 30px !important;
+    }
+
+    .contact img {
+        width: 140px;
+        padding: 20px;
+        margin-left: 10px;
+        margin-bottom: 20px;
+    }
+
+    .sosmed h2 {
+        margin-top: 50px;
+        /* box-shadow: 0 3px 20px rgba(0, 0, 0, 0.5); */
+        font-size: 20px !important;
+        display: none;
+    }
+
+    #myBtn {
+        font-size: 16px !important;
+        padding: 15px;
+    }
+
+    .testi1 {
+        width: 200px;
+        height: 300px;
+    }
+
+    .testi2 {
+        width: 300px;
+        height: 200px;
+        margin-top: 30%;
+    }
+
+    .gown1 {
+        width: 200px;
+        height: 300px;
+        margin-left: 40%;
+    }
+
+    .gown2 {
+        height: 300px;
+        width: 200px;
+        margin-top: 30%;
+        position: absolute;
+        top: -40% !important;
+        left: 40;
+        z-index: 99;
+        box-shadow: -6px 5px 15px 0px #888888;
+    }
+}
+
 /* //////////////////////////////////////////////////////////////////////////////// pc */
 @media (min-width: 992px) {
     .navbar-brand,
@@ -313,120 +506,32 @@ h5.sub-kanan {
         font-size: 25px !important;
         display: none;
     }
-}
 
-/* //////////////////////////////////////////////////////////////////////////////// tablet */
-@media (min-width: 577px) {
-    .navbar-brand,
-    .nav-link {
-        color: white !important;
-        text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.7);
-    }
-    .nav-link {
-        text-transform: uppercase;
-        margin-right: 30px;
+    .testi {
+        margin-bottom: 10%;
     }
 
-    .nav-link:hover::after {
-        content: "";
-        display: block;
-        border-bottom: 3px solid blue;
-        width: 50%;
-        margin: auto;
-        margin-top: -3px;
-    }
-
-    .jumbotron {
-        margin-top: -75px;
-        height: 600px;
-    }
-
-    .jumbotron .display-4 {
-        margin-top: 200px;
-        font-size: 50px;
-    }
-
-    .info-panel h4 {
-        font-size: 20px;
-    }
-
-    .info-panel img {
-        text-align: center;
-        margin-top: -12px;
-        width: 60px;
-        height: 60px;
-    }
-
-    .info-panel {
-        margin-top: -80px;
-    }
-
-    .testimonial {
-        margin-top: 60px;
-    }
-
-    .testimonial h5 {
-        font-size: 22px;
-    }
-
-    .testimonial figure img {
-        width: 80px;
-        margin: 20px 15px 5px;
-    }
-
-    .testimonial figure img.aktif {
-        width: 120px;
-    }
-
-    .testimonial figure .figure-caption {
-        font-size: 16px;
-    }
-
-    .footer {
-        font-size: 20px;
-    }
-
-    .responsive-iframe {
-        width: 450px;
+    .testi1 {
+        width: 300px;
         height: 400px;
     }
 
-    #contact-us {
-        margin-top: 50px;
-    }
-    #contact-us h1 {
-        font-size: 30px;
-    }
-
-    .location p {
-        font-size: 20px;
+    .testi2 {
+        width: 400px;
+        height: 300px;
+        margin-top: 30%;
     }
 
-    .location p.up {
-        margin-top: -20px;
-    }
-    .location h1,
-    .contact h1 {
-        /* box-shadow: 0 3px 20px rgba(0, 0, 0, 0.5); */
-        font-size: 30px !important;
+    .gown1 {
+        width: 300px;
+        height: 400px;
+        margin-left: 40%;
     }
 
-    .contact img {
-        width: 140px;
-        padding: 20px;
-        margin-left: 10px;
-        margin-bottom: 20px;
-    }
-
-    .sosmed h2 {
-        margin-top: 50px;
-        /* box-shadow: 0 3px 20px rgba(0, 0, 0, 0.5); */
-        font-size: 20px !important;
-        display: none;
-    }
-
-    #myBtn {
-        font-size: 16px !important;
-        padding: 15px;
+    .gown2 {
+        height: 400px;
+        width: 300px;
+        margin-top: 30%;
+        top: -28% !important;
     }
 }

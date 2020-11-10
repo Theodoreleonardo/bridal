@@ -80,76 +80,6 @@ html {
     font-weight: 500;
 }
 
-.kategori {
-    margin-top: 90px;
-}
-
-.kategori p {
-    font-size: 10px;
-}
-.kategori h1 {
-    font-size: 14px;
-}
-
-.kategori-p {
-    box-shadow: 0 3px 20px rgba(0, 0, 0, 0.5);
-}
-
-.button-group {
-    padding: 20px;
-}
-
-.button-group button {
-    border-radius: 45px;
-    outline: 0 !important;
-}
-
-.button-group button:hover {
-    background-color: brown;
-}
-
-.image-gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(50px, 100px));
-    justify-content: center;
-    /* align-items: center; */
-    grid-gap: 0 10px;
-    margin: 0 auto; /* centered */
-}
-
-.image-gallery img {
-    width: 100px;
-    height: 100px;
-    text-align: center;
-    margin-bottom: 10px;
-}
-
-.image-gallery a {
-    width: 0;
-    height: 0;
-}
-
-/* .image-gallery span {
-    font-family: viga;
-    color: white;
-    font-size: 14px;
-    font-weight: 300;
-    position: absolute;
-    margin-top: 265px;
-    margin-left: 10px;
-}
-
-.image-gallery a:hover::after {
-    content: "";
-    display: block;
-    width: 300px;
-    height: 50px;
-    background-color: rgba(0, 0, 0, 0.2);
-    position: absolute;
-    z-index: 77;
-    margin-top: 250px;
-} */
-
 /* //////////////////////////////////////////////////////////////////////////////// pc */
 @media (min-width: 992px) {
     .navbar-brand,
@@ -175,13 +105,9 @@ html {
         height: 620px;
         margin-top: -60px;
     }
+
     .carousel-item img {
         height: 650px;
-    }
-
-    #myBtn {
-        font-size: 20px;
-        padding: 15px;
     }
 
     .navbar-nav,
@@ -194,26 +120,6 @@ html {
         text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
         font-size: 30px !important;
         margin-top: -180px;
-    }
-
-    .kategori {
-        margin-top: 120px;
-    }
-
-    .kategori h1 {
-        font-size: 30px;
-    }
-    .kategori p {
-        font-size: 20px;
-    }
-
-    .image-gallery {
-        grid-template-columns: repeat(auto-fit, minmax(50px, 300px));
-    }
-
-    .image-gallery img {
-        width: 300px;
-        height: 300px;
     }
 }
 
@@ -246,38 +152,15 @@ html {
     .carousel-item img {
         height: 650px;
     }
-    #myBtn {
-        font-size: 16px !important;
-        padding: 15px;
+    .navbar-nav,
+    .navbar-nav btn {
+        font-size: 12px;
     }
+
     .display-4 {
         margin-top: 120px;
         text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.6);
         font-size: 30px !important;
         margin-top: -180px;
-    }
-    .navbar-nav,
-    .navbar-nav btn {
-        font-size: 12px;
-    }
-    .kategori {
-        margin-top: 120px;
-    }
-
-    .kategori h1 {
-        font-size: 30px;
-    }
-
-    .kategori p {
-        font-size: 20px;
-    }
-
-    .image-gallery {
-        grid-template-columns: repeat(auto-fit, minmax(50px, 300px));
-    }
-
-    .image-gallery img {
-        width: 300px;
-        height: 300px;
     }
 }
