@@ -30,7 +30,7 @@ class GaunController extends Controller
         //     ->join('ukurangauns', 'gauns.id', '=', 'ukurangauns.id_gauns')
         //     ->get();
         // dd($data->all());
-        return view('admin.gaun.index', ['gaun' => $gaun], ['ukurangauns' =>  $ukurangaun]);
+        return view('admin.gaun.index', ['gaun' => $gaun]);
     }
 
     /**
