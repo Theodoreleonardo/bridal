@@ -41,18 +41,37 @@ class TestimoniController extends Controller
     public function store(Request $request)
     {
         //
+        $data2 = $request;
+        foreach($data2 as $row){
+            $asd = $row;
+
+        }
+        foreach($request as $d){
+            $dd = $d;
+        }
+        dd($dd->all());
+
+        $imgname = $asd->gambar->getClientOriginalName() . '-' . time()
+                . '.' . $asd->gambar->extension();
+        //dd($asd->all());
+
         $validatedData = $request->validate([
             'gambar' => 'required',
         ]);
 
-        $imgname = $request->gambar->getClientOriginalName() . '-' . time()
-                . '.' . $request->gambar->extension();
-        $request->gambar->move(storage_path('app/public/images/imgtestimoni'), $imgname);
+            foreach($request as $row){
+               
+        $imgname = $row->gambar->getClientOriginalName() . '-' . time()
+                . '.' . $row->gambar->extension();
+        $row->gambar->move(storage_path('app/public/images/imgtestimoni'), $imgname);
 
         Testimoni::create([
             'gambar' => $imgname,
 
         ]);
+            }
+        
+
         
         return redirect('/testimoni')->with('Status', 'Berhasil Ditambah');
     }

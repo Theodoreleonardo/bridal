@@ -16,6 +16,9 @@
       <th scope="col">id</th>
       <th scope="col">Nama Gambar</th>
       <th scope="col">Gambar</th>
+      <th scope="col">Kategori</th>
+      <th scope="col">Aksi</th>
+    </tr>
     </tr>
   </thead>
   @foreach ($baner as $row)
@@ -23,8 +26,12 @@
     <tr>
       <th scope="row">{{$row->id}}</th>
       <td>{{$row->gambar}}</td>
-      <td><img class="img-thumbnail" src="{{asset('storage')}}/images/imgbaner/{{$row->gambar}}"></td>
+      <td><img class="img-thumbnail" style="max-width: 100px" src="{{asset('storage')}}/images/imgbaner/{{$row->gambar}}">
+      </td>
+      <td>{{$row->kategori}}
+      </td>
         <td>
+        <a href=" /admin/baners/{{$row->id}}" class="btn btn-primary">edit</a>
       <form action="/admin/baners/{{$row->id}}" method="post" class="d-inline">
     @method('delete')
     @csrf

@@ -44,6 +44,8 @@ class BanerController extends Controller
                 //dd($request);
                 $validatedData = $request->validate([
                     'gambar' => 'required',
+                    'kategori' => 'required',
+                    
                 ]);
         
                 $imgname = $request->gambar->getClientOriginalName() . '-' . time()
@@ -52,6 +54,7 @@ class BanerController extends Controller
         
                 Baner::create([
                     'gambar' => $imgname,
+                    'kategori' => $request->kategori,
         
                 ]);
                 
@@ -78,6 +81,7 @@ class BanerController extends Controller
     public function edit(Baner $baner)
     {
         //
+        return view('admin.baner.edit', ['baner' => $baner]);
     }
 
     /**
@@ -90,6 +94,22 @@ class BanerController extends Controller
     public function update(Request $request, Baner $baner)
     {
         //
+        $validatedData = $request->validate([
+            'kategori' => 'required',
+            'gambar' => 'required',
+        ]);
+        Storage::disk('local')->delete('public/images/imgbaner/' . $baner->gambar);
+       
+        $imgname = $request->gambar->getClientOriginalName() . '-' . time()
+        . '.' . $request->gambar->extension();
+        $request->gambar->move(storage_path('app/public/images/imgbaner'), $imgname);
+
+        Baner::where('id', $baner->id)
+        ->update([
+            'kategori'=>$request->kategori,
+            'gambar'=> $imgname,
+        ]);
+        return redirect('/baners')->with('Status', 'Selesai update Mantap jiwa');
     }
 
     /**

@@ -55,7 +55,7 @@ Route::patch('/gambargaun/{gambargaun}', [GambargaunController::class, 'store'])
 //Makeup
 Route::get('/makeup', [MakeupController::class, 'index']);
 Route::get('admin/makeup/{id}', [MakeupController::class, 'route']);
-Route::get('/makeup/create', [MakeupController::class, 'create']);
+Route::get('/makeup/create/{id}', [MakeupController::class, 'create']);
 Route::post('/admin/makeup', [MakeupController::class, 'store']);
 Route::get('/{makeup}/edit/makeup', [MakeupController::class, 'edit']);
 Route::post('/admin/makeup/{makeup}', [MakeupController::class, 'update']);
@@ -69,13 +69,15 @@ Route::get('/admin/logout/', [AuthController::class, 'logout']);
 Route::get('/baners', [BanerController::class, 'index']);
 Route::get('/admin/baners', [BanerController::class, 'create']);
 Route::post('/admin/baners', [BanerController::class, 'store']);
+Route::post('/admin/baners/{baner}', [BanerController::class, 'update']);
+Route::get('/admin/baners/{baner}', [BanerController::class, 'edit']);
 Route::delete('/admin/baners/{baner}', [BanerController::class, 'destroy']);
 
 //testimoni
 Route::get('/testimoni', [TestimoniController::class, 'index']);
 Route::get('/admin/testimoni', [TestimoniController::class, 'create']);
-Route::post('/admin/testimoni', [TestimoniController::class, 'store']);
-Route::delete('/admin/testimoni/{testimoni}', [TestimoniController::class, 'destroy']);
+Route::post('/admin/testimoni', [TestimoniController::class, 'store'])->name('testi');
+Route::delete('/admin/testimoni/{testimoni}', [TestimoniController::class, 'destroy'])->name('delete');
 
 //galeri
 Route::get('/galeri', [GaleriController::class, 'index']);

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Makeup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class MakeupController extends Controller
 {
@@ -15,11 +16,8 @@ class MakeupController extends Controller
      */
     public function index()
     {
-        //
-        $id = 2;
-       // $makeup = DB::table('makeups')->get();
 
-        return view('admin.makeup.index',['id' => $id]);
+        return view('admin.makeup.index');
     }
 
     /**
@@ -27,10 +25,20 @@ class MakeupController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
         //
-        return view('admin.makeup.create');
+        if ($id == '1') {
+            $data = ['Prewedding','Holy Matrimony','Reception',];
+            //dd($asd);
+            return view('admin.makeup.create', ['makeup' => $data],['jenis' => 'Wedding']);
+        } else if ($id == '2') {
+            $data = ['Birthday','Prom','Graduation','Maternity','Family','Mom','Bridesmaid',];
+            return view('admin.makeup.create', ['makeup' => $data],['jenis' => 'Party']);
+        } else if ($id == '3') {
+            $data = ['Kids','Man','Woman',];
+            return view('admin.makeup.create', ['makeup' => $data],['jenis' => 'Commercial Photoshoot']);
+        }
     }
 
     /**
@@ -44,11 +52,27 @@ class MakeupController extends Controller
         $validatedData = $request->validate([
             'jenis' => 'required',
             'style' => 'required',
+            'gambar' => 'required',
         ]);
+
+        $imgname = $request->gambar->getClientOriginalName() . '-' . time()
+        . '.' . $request->gambar->extension();
+        $request->gambar->move(storage_path('app/public/images/imgmakeup'), $imgname);
+
+        if ($request->jenis == 'Wedding'){
+            $id = '1';
+        }
+        else if ($request->jenis == 'Party'){
+            $id = '2';
+        }
+        else if ($request->jenis == 'Commercial Photoshoot'){
+            $id = '3';
+        }
 
         Makeup::create([
             'jenis' => $request->jenis,
             'style' => $request->style,
+            'gambar' => $imgname,
         ]);
 
         return redirect('/makeup')->with('Status', 'Berhasil Ditambah');
@@ -68,10 +92,10 @@ class MakeupController extends Controller
             return view('admin.makeup.show', ['makeup' => $data]);
         } else if ($id == '2') {
             $data = DB::table('makeups')->where('jenis', 'party')->get();
-            return view('admin.makeup.show', ['makeup' => $data]);
+            return view('admin.makeup.show1', ['makeup' => $data]);
         } else if ($id == '3') {
             $data = DB::table('makeups')->where('jenis', 'Commercial Photoshoot')->get();
-            return view('admin.makeup.show', ['makeup' => $data]);
+            return view('admin.makeup.show2', ['makeup' => $data]);
         }
     }
 
@@ -83,8 +107,20 @@ class MakeupController extends Controller
      */
     public function edit(Makeup $makeup)
     {
-        //
-        return view('admin.makeup.edit', ['makeup' => $makeup]);
+        if ($makeup->jenis == 'Wedding') {
+            $data = ['Prewedding','Holy Matrimony','Reception',];
+            //dd($asd);
+            return view('admin.makeup.edit', ['makeup' => $makeup],['data' => $data]);
+
+        } else if ($makeup->jenis == 'Party') {
+            $data = ['Birthday','Prom','Graduation','Maternity','Family','Mom','Bridesmaid',];
+            return view('admin.makeup.edit', ['makeup' => $makeup],['data' => $data]);
+
+        } else if ($makeup->jenis == 'Commercial Photoshoot') {
+            $data = ['Kids','Man','Woman',];
+            return view('admin.makeup.edit', ['makeup' => $makeup],['data' => $data]);
+        }
+ //    return view('admin.makeup.edit', ['makeup' => $makeup]);
     }
 
     /**
@@ -100,16 +136,22 @@ class MakeupController extends Controller
         $validatedData = $request->validate([
             'jenis' => 'required',
             'style' => 'required',
+            'gambar' => 'required',
         ]);
+
+        Storage::disk('local')->delete('public/images/imgmakeup/' . $makeup->gambar);
+       
+        $imgname = $request->gambar->getClientOriginalName() . '-' . time()
+        . '.' . $request->gambar->extension();
+        $request->gambar->move(storage_path('app/public/images/imgmakeup'), $imgname);
         //
         Makeup::where('id', $makeup->id)
             ->update([
                 'jenis' => $request->jenis,
                 'style' => $request->style,
+                'gambar' => $imgname,
             ]);
-        // dd($request->all());
-        //dd($data[0]->id);
-        //$url = url()->previous();
+
         return redirect('/makeup')->with('Status', 'Selesai update Mantap jiwa');
     }
 
@@ -125,6 +167,8 @@ class MakeupController extends Controller
 
         $url = url()->previous();
         Makeup::destroy($makeup->id);
+        Storage::disk('local')->delete('public/images/imgmakeup/' . $makeup->gambar);
+
         return redirect($url)->with('Status', 'Makeup Berhasil Dihapus');
     }
 }

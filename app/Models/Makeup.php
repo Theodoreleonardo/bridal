@@ -8,5 +8,5 @@ use Illuminate\Database\Eloquent\Model;
 class Makeup extends Model
 {
     use HasFactory;
-    protected $fillable = ['jenis','style'];
+    protected $fillable = ['jenis','style','gambar'];
 }

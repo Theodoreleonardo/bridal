@@ -27,7 +27,7 @@
       <td>{{$gaun->nama}}</td>
       <td>{{$gaun->jenis}}</td>
       <td>{{$gaun->gambar}}</td>
-      <td><img class="img-thumbnail" src="{{asset('storage')}}/images/imggaun/{{$gaun->gambar}}"></td>
+      <td><img class="img-thumbnail" style="max:width=4000px" src="{{asset('storage')}}/images/imggaun/{{$gaun->gambar}}"></td>
       <td>
       <a href=" {{url($gaun->id)}}/edit" class="btn btn-primary">edit</a>
       <form action="/admin/{{$gaun->id}}" method="post" class="d-inline">
