@@ -16,4 +16,13 @@ class HomeController extends Controller
     {
         return view('gown');
     }
+
+    public function makeup()
+    {
+        return view('makeup');
+    }
+    public function testi()
+    {
+        return view('testi');
+    }
 }

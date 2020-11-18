@@ -60,6 +60,42 @@ Home
         </div>
     </section>
     <!--END testimonial -->
+
+    <div class="container testi">
+        <div class="row">
+            <div class="col-sm-6 gambar">
+                <p>
+                    <img src="storage/slider/ntr1.jpg" alt="" class="testi1">
+                    <img src="storage/slider/bridal.jpg" alt="" class="testi2">
+                </p>
+            </div>
+            <div class="col-sm-6 judul">
+                <h2 style="font-weight: bold;">100.000+ Review Terpercaya</h2>
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unkn
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <div class="container gown">
+        <div class="row">
+            <div class="col-sm-6 judul">
+                <h2 style="font-weight: bold;">100.000+ Review Terpercaya</h2>
+                <p>
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+                    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unkn
+                </p>
+            </div>
+            <div class="col-sm-6 gambar">
+                <p>
+                    <img src="storage/slider/ntr1.jpg" alt="" class="gown1">
+                    <img src="storage/slider/ntr2.jpg" alt="" class="gown2">
+                </p>
+            </div>
+        </div>
+    </div>
     <div class="row" id="contact-us">
         <div class="col-lg-6 justify-content-center">
             <div class="location">
