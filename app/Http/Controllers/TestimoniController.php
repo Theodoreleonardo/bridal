@@ -42,37 +42,38 @@ class TestimoniController extends Controller
     {
         //
         $data2 = $request;
-        foreach($data2 as $row){
+
+        $files = $data2->file('gambar');
+
+        foreach ($files as $row) {
             $asd = $row;
 
+            dd($asd);
         }
-        foreach($request as $d){
-            $dd = $d;
-        }
-        dd($dd->all());
+
 
         $imgname = $asd->gambar->getClientOriginalName() . '-' . time()
-                . '.' . $asd->gambar->extension();
+            . '.' . $asd->gambar->extension();
         //dd($asd->all());
 
         $validatedData = $request->validate([
             'gambar' => 'required',
         ]);
 
-            foreach($request as $row){
-               
-        $imgname = $row->gambar->getClientOriginalName() . '-' . time()
+        foreach ($request as $row) {
+
+            $imgname = $row->gambar->getClientOriginalName() . '-' . time()
                 . '.' . $row->gambar->extension();
-        $row->gambar->move(storage_path('app/public/images/imgtestimoni'), $imgname);
+            $row->gambar->move(storage_path('app/public/images/imgtestimoni'), $imgname);
 
-        Testimoni::create([
-            'gambar' => $imgname,
+            Testimoni::create([
+                'gambar' => $imgname,
 
-        ]);
-            }
-        
+            ]);
+        }
 
-        
+
+
         return redirect('/testimoni')->with('Status', 'Berhasil Ditambah');
     }
 
