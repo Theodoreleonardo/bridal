@@ -11,7 +11,10 @@
     @csrf
   <div class="form-group">
     <label for="exampleInputEmail1">Kategori</label>
-    <input type="Text" value="{{$baner->kategori}}" class="form-control @error('text') is-invalid @enderror" id="kategori" placeholder="masukan kategori" name="kategori">
+    <select value="{{old('style')}}" class="form-control @error('style') is-invalid @enderror" id="style" placeholder="masukan style" name="style">
+    <option value="Gaun">Gaun</option>
+    <option value="Makeup">Makeup</option>
+  </select>
   </div>
   <div class="form-group">
   <input type="hidden" value="{{$baner->gambar}}"id="gambar"name="gambar">

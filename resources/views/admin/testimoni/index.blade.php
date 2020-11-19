@@ -23,7 +23,7 @@
     <tr>
       <th scope="row">{{$row->id}}</th>
       <td>{{$row->gambar}}</td>
-      <td><img class="img-thumbnail" src="{{asset('storage')}}/images/imgtestimoni/{{$row->gambar}}"></td>
+      <td><img class="img-thumbnail" style="max:width=4000px" src="{{asset('storage')}}/images/imgtestimoni/{{$row->gambar}}"></td>
         <td>
       <form action="/admin/testimoni/{{$row->id}}" method="post" class="d-inline">
     @method('delete')

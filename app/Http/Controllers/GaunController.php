@@ -19,17 +19,6 @@ class GaunController extends Controller
     {
         //
         $gaun = DB::table('gauns')->get();
-        // $ukurangaun = DB::table('ukurangauns')->get();
-
-        // foreach ($gaun as $row){
-        //     $id = $row->id;
-        // }
-        //dd($id);
-        
-        // $data = DB::table('gauns')
-        //     ->join('ukurangauns', 'gauns.id', '=', 'ukurangauns.id_gauns')
-        //     ->get();
-        // dd($data->all());
         return view('admin.gaun.index', ['gaun' => $gaun]);
     }
 

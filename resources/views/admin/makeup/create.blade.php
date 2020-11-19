@@ -23,6 +23,7 @@
     <input type="file" value="" class="form-control @error('gambar') is-invalid @enderror" id="gambar" name="gambar">
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
+  <a href="/makeup" class="btn btn-danger">Kembali</a>
 </form>
 
     </div>

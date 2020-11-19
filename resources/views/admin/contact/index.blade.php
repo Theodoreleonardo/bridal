@@ -9,18 +9,16 @@
     <h1>Contact</h1>
     <table class="table">
   <tbody>
-  <a href="/admin/contact" class="badge badge-info">Tambar Gambar Baner</a>
+  <a href="/admin/contact" class="badge badge-info">Tambar Contact</a>
   <table class="table">
   <thead>
     <tr>
-      <th scope="col">id</th>
       <th scope="col">contact</th>
     </tr>
   </thead>
   @foreach ($contact as $row)
   <tbody>
     <tr>
-      <th scope="row">{{$row->id}}</th>
       <td>{{$row->text}}</td>
         <td>
         <a href=" {{url($row->id)}}/contact" class="btn btn-primary">edit</a>

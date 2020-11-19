@@ -42,28 +42,24 @@ class TestimoniController extends Controller
     {
         //
         $data2 = $request;
-        foreach($data2 as $row){
-            $asd = $row;
 
-        }
-        foreach($request as $d){
-            $dd = $d;
-        }
-        dd($dd->all());
+        $files = $request->file('gambar');
+        // foreach ($files as $row) {
+        //     $asd = $row;
 
-        $imgname = $asd->gambar->getClientOriginalName() . '-' . time()
-                . '.' . $asd->gambar->extension();
-        //dd($asd->all());
+        //     dd($asd);
+        // }
+       
 
         $validatedData = $request->validate([
             'gambar' => 'required',
         ]);
 
-            foreach($request as $row){
+            foreach($files as $row){
                
-        $imgname = $row->gambar->getClientOriginalName() . '-' . time()
-                . '.' . $row->gambar->extension();
-        $row->gambar->move(storage_path('app/public/images/imgtestimoni'), $imgname);
+        $imgname = $row->getClientOriginalName() . '-' . time()
+                . '.' . $row->extension();
+        $row->move(storage_path('app/public/images/imgtestimoni'), $imgname);
 
         Testimoni::create([
             'gambar' => $imgname,

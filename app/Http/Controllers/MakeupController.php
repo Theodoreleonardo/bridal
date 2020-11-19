@@ -75,7 +75,7 @@ class MakeupController extends Controller
             'gambar' => $imgname,
         ]);
 
-        return redirect('/makeup')->with('Status', 'Berhasil Ditambah');
+        return redirect('/admin/makeup/'.$id)->with('Status', 'Berhasil Ditambah');
         //asd
     }
 
@@ -110,7 +110,7 @@ class MakeupController extends Controller
         if ($makeup->jenis == 'Wedding') {
             $data = ['Prewedding','Holy Matrimony','Reception',];
             //dd($asd);
-            return view('admin.makeup.edit', ['makeup' => $makeup],['data' => $data]);
+            return view('admin.makeup.edit', ['makeup' => $makeup],['data' => $data],['asd'=>'1']);
 
         } else if ($makeup->jenis == 'Party') {
             $data = ['Birthday','Prom','Graduation','Maternity','Family','Mom','Bridesmaid',];
@@ -152,7 +152,7 @@ class MakeupController extends Controller
                 'gambar' => $imgname,
             ]);
 
-        return redirect('/makeup')->with('Status', 'Selesai update Mantap jiwa');
+        return redirect('/makeup')->with('Status', 'Selesai update');
     }
 
     /**

@@ -30,12 +30,12 @@ use App\Http\Controllers\ContactController;
 //login
 Route::get('/admin/login/', [AuthController::class, 'index'])->name('login');
 Route::post('/admin/login/', [AuthController::class, 'login']);
+
 //register
 Route::get('/admin/register/', [RegisterController::class, 'index']);
 Route::post('/admin/register/', [RegisterController::class, 'store']);
 
 Route::Group(['middleware' => 'auth'], function () {
-<<<<<<< HEAD
 // Gaun
 Route::get('/gaun/create', [GaunController::class, 'create']);
 Route::post('/admin/gaun', [GaunController::class, 'store']);
@@ -64,38 +64,8 @@ Route::delete('/admin/makeup/{makeup}', [MakeupController::class, 'destroy']);
 
 //login
 Route::get('/admin/logout/', [AuthController::class, 'logout']);
-=======
-    // Gaun
-    Route::get('/gaun/create', [GaunController::class, 'create']);
-    Route::post('/admin/gaun', [GaunController::class, 'store']);
-    Route::get('/{gaun}/edit', [GaunController::class, 'edit']);
-    Route::patch('/gaun/{gaun}', [GaunController::class, 'update']);
-    Route::delete('/admin/{gaun}', [GaunController::class, 'destroy']);
-    Route::get('/gaun', [GaunController::class, 'index']);
-    Route::get('/gaun/{gaun}', [GaunController::class, 'show']);
-    //Ukuran Gaun
-    Route::get('/ukurangaun', [UkurangaunController::class, 'index']);
-    Route::post('/admin/ukuran', [UkurangaunController::class, 'store']);
-    Route::patch('/ukurangaun/{ukurangaun}', [UkurangaunController::class, 'update']);
-    Route::get('/admin/ukuran/{id}', [UkurangaunController::class, 'create']);
-    Route::get('/admin/editukuran/{ukurangaun}', [UkurangaunController::class, 'edit']);
-    Route::delete('/admin/ukurangaun/{ukurangaun}', [UkurangaunController::class, 'destroy']);
-    //GambarGaun
-    Route::patch('/gambargaun/{gambargaun}', [GambargaunController::class, 'store']);
-    //Makeup
-    Route::get('/makeup', [MakeupController::class, 'index']);
-    Route::get('admin/makeup/{id}', [MakeupController::class, 'route']);
-    Route::get('/makeup/create', [MakeupController::class, 'create']);
-    Route::post('/admin/makeup', [MakeupController::class, 'store']);
-    Route::get('/{makeup}/edit/makeup', [MakeupController::class, 'edit']);
-    Route::post('/admin/makeup/{makeup}', [MakeupController::class, 'update']);
-    Route::delete('/admin/makeup/{makeup}', [MakeupController::class, 'destroy']);
->>>>>>> 4cdb3fc502e1dbf213cb02e59167ac5b8db855f0
 
-    //login
-    Route::get('/admin/logout/', [AuthController::class, 'logout']);
 
-<<<<<<< HEAD
 //Baner
 Route::get('/baners', [BanerController::class, 'index']);
 Route::get('/admin/baners', [BanerController::class, 'create']);
@@ -109,20 +79,8 @@ Route::get('/testimoni', [TestimoniController::class, 'index']);
 Route::get('/admin/testimoni', [TestimoniController::class, 'create']);
 Route::post('/admin/testimoni', [TestimoniController::class, 'store'])->name('testi');
 Route::delete('/admin/testimoni/{testimoni}', [TestimoniController::class, 'destroy'])->name('delete');
-=======
 
-    //Baner
-    Route::get('/baners', [BanerController::class, 'index']);
-    Route::get('/admin/baners', [BanerController::class, 'create']);
-    Route::post('/admin/baners', [BanerController::class, 'store']);
-    Route::delete('/admin/baners/{baner}', [BanerController::class, 'destroy']);
->>>>>>> 4cdb3fc502e1dbf213cb02e59167ac5b8db855f0
 
-    //testimoni
-    Route::get('/testimoni', [TestimoniController::class, 'index']);
-    Route::get('/admin/testimoni', [TestimoniController::class, 'create']);
-    Route::post('/admin/testimoni', [TestimoniController::class, 'store']);
-    Route::delete('/admin/testimoni/{testimoni}', [TestimoniController::class, 'destroy']);
 
     //galeri
     Route::get('/galeri', [GaleriController::class, 'index']);

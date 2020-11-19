@@ -7,7 +7,6 @@
   <div class="row">
     <div class="col-10">
       <h1>Make Up</h1>
-      <a href="/makeup/create" class="badge badge-info">Tambar Data Make UP</a>
       <table class="table">
         @if (session('Status'))
         <div class="alert alert-success">

@@ -6,24 +6,22 @@
 <div class="contianer">
     <div class="row">
     <div class="col-10">
-    <h1>Admin Gaun</h1>
+    <h1>Gaun</h1>
+    <a href="/gaun" class="badge badge-danger">Kembali</a>
     <table class="table">
   <tbody>
 
   <table class="table">
   <thead>
     <tr>
-      <th scope="col">id</th>
       <th scope="col">nama</th>
       <th scope="col">jenis</th>
       <th scope="col">nama gambar</th>
       <th scope="col">gambar</th>
-      <th scope="col">Tombol</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th scope="row">{{$gaun->id}}</th>
       <td>{{$gaun->nama}}</td>
       <td>{{$gaun->jenis}}</td>
       <td>{{$gaun->gambar}}</td>
@@ -43,17 +41,14 @@
 <table class="table">
   <thead>
     <tr>
-      <th scope="col">id</th>
       <th scope="col">ukuran</th>
       <th scope="col">deskripsi</th>
-      <th scope="col">Aksi</th>
     </tr>
   </thead>
  
   <tbody>
    @foreach ($ukurangaun as $row)
     <tr>
-      <th scope="row">{{$row->id}}</th>
       <td>{{$row->ukuran}}</td>
       <td>{{$row->deskripsi}}</td>
       <td>
