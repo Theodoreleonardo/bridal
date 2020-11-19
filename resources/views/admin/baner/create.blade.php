@@ -15,7 +15,7 @@
   </div>
   <div class="form-group">
     <label for="exampleInputEmail1">Masukan Kategori</label>
-    <select value="{{old('style')}}" class="form-control @error('style') is-invalid @enderror" id="style" placeholder="masukan style" name="style">
+    <select value="{{old('kategori')}}" class="form-control @error('style') is-invalid @enderror" id="kategori" placeholder="masukan style" name="kategori">
     <option value="Gaun">Gaun</option>
     <option value="Makeup">Makeup</option>
   </select>
