@@ -24,11 +24,11 @@ MakeUp
     </div>
 </div>
 <h1 class="display-4">At the touch of <span>love</span><br>everyone becomes a <span>poet</span>.</h1>
-<nav class="menu">
+<nav class="menu" id="menu">
     <ul class="menu-list">
-        <li class="contentss"><a id="1" href="#">Wedding</a></li>
-        <li class="contentss"><a id="2" href="#">Party</a></li>
-        <li class="contentss"><a id="3" href="#">Commercial</a></li>
+        <li class="contentss"><a id="1" href="#menu">Wedding</a></li>
+        <li class="contentss"><a id="2" href="#menu">Party</a></li>
+        <li class="contentss"><a id="3" href="#menu">Commercial</a></li>
     </ul>
 </nav>
 <div class="drop-content button-group filter-button-group">
@@ -107,8 +107,9 @@ MakeUp
 
     function dropContent(a) {
         if (a == 1) {
-            var txt1 = '<li data-filter=".prewedding><a href="#">Prewedding</a></li>' +
-                '<li data-filter=".holy"><a href="#">Holy Matrimony</a></li>' +
+            var txt1 =
+                '<li ><a href="#">Prewedding</a></li>' +
+                '<li ><a href="#">Holy Matrimony</a></li>' +
                 '<li ><a href="#">Reception</a></li>';
         } else if (a == 2) {
             var txt1 = '<li ><a href="#">Birthday</a></li>' +
