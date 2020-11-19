@@ -3,6 +3,12 @@
 MakeUp
 @endsection
 
+<?php
+// foreach($gaun as $row){
+//     echo $row->gambar;
+// }
+?>
+
 <link rel="stylesheet" href="{{ asset('css/makeup.css') }}">
 @section('content')
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
@@ -15,12 +21,11 @@ MakeUp
         <div class="carousel-item active">
             <img class="d-block w-100" src="storage/slider/ntr1.jpg" alt="First slide">
         </div>
+        @foreach($baner as $row)
         <div class="carousel-item">
-            <img class="d-block w-100" src="storage/slider/ntr2.jpg" alt="Second slide">
+            <img class="d-block w-100" src="{{asset('storage')}}/images/imgbaner/{{$row->gambar}}" >
         </div>
-        <div class="carousel-item">
-            <img class="d-block w-100" src="storage/slider/ntr3.jpg" alt="Third slide">
-        </div>
+        @endforeach
     </div>
 </div>
 <h1 class="display-4">At the touch of <span>love</span><br>everyone becomes a <span>poet</span>.</h1>
@@ -46,8 +51,10 @@ MakeUp
     </div>
 </div>
 <div class="image-gallery">
-    <a href="storage/slider/ntr1.jpg" data-lightbox="example-set" data-title="prewedding"><img class="example-image mermaid" src="storage/slider/ntr1.jpg" alt="" /><span></span></a>
-    <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="holy"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
+@foreach($makeup as $row)
+    <a href="{{asset('storage')}}/images/imgmakeup/{{$row->gambar}}" data-lightbox="example-set" data-title="{{$row->jenis}}"><img class="example-image mermaid" src="{{asset('storage')}}/images/imgmakeup/{{$row->gambar}}" alt="" /><span></span></a>
+    @endforeach
+    <!-- <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="holy"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
     <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="holy"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
     <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="holy"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
     <a href="storage/slider/gbr1.png" data-lightbox="example-set" data-title="holy"><img class="example-image mermaid" src="storage/slider/gbr1.png" alt="" /><span></span></a>
@@ -55,7 +62,7 @@ MakeUp
     <a href="storage/slider/gbr1.png" data-lightbox="example-set" data-title="holy"><img class="example-image mermaid" src="storage/slider/gbr1.png" alt="" /><span></span></a>
     <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="prewedding"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
     <a href="storage/slider/gbr1.png" data-lightbox="example-set" data-title="prewedding"><img class="example-image mermaid" src="storage/slider/gbr1.png" alt="" /><span></span></a>
-    <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="prewedding"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
+    <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="prewedding"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a> -->
 </div>
 
 <script src="{{ asset('lightbox2/dist/js/lightbox.min.js') }}"></script>

@@ -2,12 +2,6 @@
 @section('title')
 Gown
 @endsection
-
-<?php
-foreach($gaun as $row){
-    echo $row->gambar;
-}
-?>
 <link rel="stylesheet" href="{{ asset('css/gown.css') }}">
 <link rel="stylesheet" href="{{ asset('icofont/icofont.min.css') }}">
 <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Viga&display=swap" rel="stylesheet">

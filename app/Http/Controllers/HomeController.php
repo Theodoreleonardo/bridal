@@ -4,11 +4,15 @@ namespace App\Http\Controllers;
 
 use App\Models\Home;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
+
+
 use App\Models\Gaun;
 use App\Models\Ukurangaun;
 use App\Models\baners;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Storage;
+use App\Models\Makeup;
+
 
 class HomeController extends Controller
 {
@@ -27,7 +31,9 @@ class HomeController extends Controller
 
     public function makeup()
     {
-        return view('makeup');
+        $makeup = DB::table('makeups')->get();
+        $baner = DB::table('baners')->where('kategori','Makeup')->get();
+        return view('makeup',['makeup' => $makeup],['baner' => $baner]);
     }
     public function testi()
     {
