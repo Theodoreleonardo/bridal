@@ -2,6 +2,12 @@
 @section('title')
 Gown
 @endsection
+
+<?php
+foreach($gaun as $row){
+    echo $row->gambar;
+}
+?>
 <link rel="stylesheet" href="{{ asset('css/gown.css') }}">
 <link rel="stylesheet" href="{{ asset('icofont/icofont.min.css') }}">
 <link href="https://fonts.googleapis.com/css2?family=Poppins&family=Viga&display=swap" rel="stylesheet">
@@ -15,14 +21,13 @@ Gown
     </ol>
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img class="d-block w-100" src="storage/slider/ntr1.jpg" alt="First slide">
+            <img class="d-block w-100" src="{{asset('storage')}}/images/imgbaner/index.png-1605801497.png" >
         </div>
+        @foreach($baner as $row)
         <div class="carousel-item">
-            <img class="d-block w-100" src="storage/slider/ntr2.jpg" alt="Second slide">
+            <img class="d-block w-100" src="{{asset('storage')}}/images/imgbaner/{{$row->gambar}}" >
         </div>
-        <div class="carousel-item">
-            <img class="d-block w-100" src="storage/slider/ntr3.jpg" alt="Third slide">
-        </div>
+        @endforeach
     </div>
 </div>
 <h1 class="display-4">At the touch of <span>love</span><br>everyone becomes a <span>poet</span>.</h1>
@@ -45,8 +50,10 @@ Gown
     <button data-filter=".ball">Ball Gown</button>
 </div>
 <div class="image-gallery">
-    <a href="storage/slider/ntr1.jpg" data-lightbox="example-set" data-title="mermaid"><img class="example-image mermaid" src="storage/slider/ntr1.jpg" alt="" /><span></span></a>
-    <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
+@foreach($gaun as $row)
+    <a href="{{asset('storage')}}/images/imggaun/{{$row->gambar}}" data-lightbox="example-set" data-title="{{$row->jenis}}"><img class="example-image mermaid" src="{{asset('storage')}}/images/imggaun/{{$row->gambar}}" alt="" /><span></span></a>
+@endforeach
+    <!-- <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
     <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
     <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
     <a href="storage/slider/gbr1.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image mermaid" src="storage/slider/gbr1.png" alt="" /><span></span></a>
@@ -54,7 +61,7 @@ Gown
     <a href="storage/slider/gbr1.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image mermaid" src="storage/slider/gbr1.png" alt="" /><span></span></a>
     <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
     <a href="storage/slider/gbr1.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image mermaid" src="storage/slider/gbr1.png" alt="" /><span></span></a>
-    <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
+    <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a> -->
 </div>
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 
