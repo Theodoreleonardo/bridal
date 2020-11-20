@@ -43,7 +43,7 @@ class BanerController extends Controller
         //
                 //dd($request);
                 $validatedData = $request->validate([
-                    'gambar' => 'required',
+                    'gambar' => 'required|image',
                     'kategori' => 'required',
                     
                 ]);
@@ -96,7 +96,7 @@ class BanerController extends Controller
         //
         $validatedData = $request->validate([
             'kategori' => 'required',
-            'gambar' => 'required',
+            'gambar' => 'required|image',
         ]);
         Storage::disk('local')->delete('public/images/imgbaner/' . $baner->gambar);
        

@@ -17,8 +17,8 @@
   </select>
   </div>
   <div class="form-group">
-  <input type="hidden" value="{{$baner->gambar}}"id="gambar"name="gambar">
-    <label for="exampleInputEmail1">gambar</label>
+    <label @error('gambar') class="text-danger" @enderror>Gambar @error('gambar')
+    {{$message}} @enderror</label>
     <input type="file" value="" class="form-control @error('gambar') is-invalid @enderror" id="gambar" name="gambar">
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>

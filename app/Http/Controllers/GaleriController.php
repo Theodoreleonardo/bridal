@@ -6,6 +6,7 @@ use App\Models\Galeri;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Validator;
 
 class GaleriController extends Controller
 {
@@ -42,7 +43,7 @@ class GaleriController extends Controller
     {
         //
         $validatedData = $request->validate([
-            'gambar' => 'required',
+            'gambar' => 'required|image',
         ]);
 
         $imgname = $request->gambar->getClientOriginalName() . '-' . time()

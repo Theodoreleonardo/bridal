@@ -38,7 +38,7 @@ class GaunController extends Controller
         $validatedData = $request->validate([
             'nama' => 'required',
             'jenis' => 'required',
-            'gambar' => 'required',
+            'gambar' => 'required|image',
         ]);
 
         $imgname = $request->gambar->getClientOriginalName() . '-' . time()
@@ -94,7 +94,7 @@ class GaunController extends Controller
         $validatedData = $request->validate([
             'nama' => 'required',
             'jenis' => 'required',
-            'gambar' => 'required',
+            'gambar' => 'required|image',
         ]);
         //
         Storage::disk('local')->delete('public/images/imggaun/' . $gaun->gambar);

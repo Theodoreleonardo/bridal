@@ -10,7 +10,8 @@
             <form method="POST" id="upload_form" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group">
-                    <label for="exampleInputEmail1">gambar</label>
+                    <label @error('gambar') class="text-danger" @enderror>Gambar @error('gambar')
+    {{$message}} @enderror</label>
                     <input type="file" id="gambar" name="gambar[]" value="" multiple="true " class="form-control @error('gambar') is-invalid @enderror">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>

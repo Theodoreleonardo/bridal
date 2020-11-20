@@ -31,7 +31,8 @@ else if ($makeup->jenis == 'Commercial Photoshoot'){
   </select>
   </div>
   <div class="form-group">
-    <label for="exampleInputEmail1">gambar</label>
+  <label @error('gambar') class = "text-danger" @enderror for="exampleInputEmail1">Gambar @error('gambar')
+    {{$message}} @enderror </label>
     <input type="file" value="" class="form-control @error('gambar') is-invalid @enderror" id="gambar" name="gambar">
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>

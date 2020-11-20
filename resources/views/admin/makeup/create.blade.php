@@ -11,7 +11,8 @@
     @csrf
   <div class="form-group">
   <input type="hidden" value="{{$jenis}}"id="jenis"name="jenis">
-    <label for="exampleInputEmail1">Style</label>
+    <label for="exampleInputEmail1">Style @error('style')
+    {{$message}} @enderror</label>
     <select value="{{old('style')}}" class="form-control @error('style') is-invalid @enderror" id="style" placeholder="masukan style" name="style">
     @foreach($makeup as $data)
     <option value="{{$data}}">{{$data}}</option>
@@ -19,7 +20,8 @@
   </select>
   </div>
   <div class="form-group">
-    <label for="exampleInputEmail1">gambar</label>
+    <label @error('gambar') class = "text-danger" @enderror for="exampleInputEmail1">Gambar @error('gambar')
+    {{$message}} @enderror </label>
     <input type="file" value="" class="form-control @error('gambar') is-invalid @enderror" id="gambar" name="gambar">
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
