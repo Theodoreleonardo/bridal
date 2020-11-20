@@ -38,7 +38,8 @@ class HomeController extends Controller
     }
     public function testi()
     {
+        $baner = DB::table('baners')->get();
         $testi = DB::table('testimonis')->get();
-        return view('testi',['testi' => $testi]);
+        return view('testi',['testi' => $testi],['baner' => $baner]);
     }
 }
