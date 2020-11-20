@@ -29,7 +29,7 @@ class MakeupController extends Controller
     {
         //
         if ($id == '1') {
-            $data = ['Prewedding','Holy Matrimony','Reception',];
+            $data = ['Prewedding','Holy','Reception',];
             //dd($asd);
             return view('admin.makeup.create', ['makeup' => $data],['jenis' => 'Wedding']);
         } else if ($id == '2') {
@@ -52,7 +52,7 @@ class MakeupController extends Controller
         $validatedData = $request->validate([
             'jenis' => 'required',
             'style' => 'required',
-            'gambar' => 'required',
+            'gambar' => 'required|image',
         ]);
 
         $imgname = $request->gambar->getClientOriginalName() . '-' . time()
@@ -108,7 +108,7 @@ class MakeupController extends Controller
     public function edit(Makeup $makeup)
     {
         if ($makeup->jenis == 'Wedding') {
-            $data = ['Prewedding','Holy Matrimony','Reception',];
+            $data = ['Prewedding','Holy','Reception',];
             //dd($asd);
             return view('admin.makeup.edit', ['makeup' => $makeup],['data' => $data],['asd'=>'1']);
 
@@ -136,7 +136,7 @@ class MakeupController extends Controller
         $validatedData = $request->validate([
             'jenis' => 'required',
             'style' => 'required',
-            'gambar' => 'required',
+            'gambar' => 'required|image',
         ]);
 
         Storage::disk('local')->delete('public/images/imgmakeup/' . $makeup->gambar);

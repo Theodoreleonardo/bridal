@@ -52,7 +52,7 @@ class TestimoniController extends Controller
        
 
         $validatedData = $request->validate([
-            'gambar' => 'required',
+            'gambar' => 'required|image',
         ]);
 
             foreach($files as $row){

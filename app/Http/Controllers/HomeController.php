@@ -12,6 +12,7 @@ use App\Models\Gaun;
 use App\Models\Ukurangaun;
 use App\Models\baners;
 use App\Models\Makeup;
+use App\Models\Testimoni;
 
 
 class HomeController extends Controller
@@ -37,6 +38,7 @@ class HomeController extends Controller
     }
     public function testi()
     {
-        return view('testi');
+        $testi = DB::table('testimonis')->get();
+        return view('testi',['testi' => $testi]);
     }
 }

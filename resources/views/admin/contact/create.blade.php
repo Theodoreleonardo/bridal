@@ -10,7 +10,8 @@
     <form method="POST" action="/admin/contact" enctype="multipart/form-data">
     @csrf
   <div class="form-group">
-    <label for="exampleInputEmail1">Masukan Text</label>
+    <label @error('text') class="text-danger" @enderror>Masukan Text @error('text')
+    {{$message}} @enderror</label>
     <input type="Text" value="{{old('nama')}}" class="form-control @error('nama') is-invalid @enderror" id="text" placeholder="masukan text" name="text">
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
