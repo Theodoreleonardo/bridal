@@ -10,7 +10,7 @@
                 <a class="nav-link" href="/gown">Gown</a>
                 <a class="nav-link" href="/makeups">Make Up</a>
                 <a class="nav-link" href="/testi">Testimonial</a>
-                <a class="btn btn-primary tombol page-scroll" href="#contact-us">Contact Us</a>
+                <!-- <a class="btn btn-primary tombol page-scroll" href="#contact-us">Contact Us</a> -->
             </div>
         </div>
     </div>
