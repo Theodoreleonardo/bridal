@@ -9,17 +9,14 @@ Gown
 
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        @foreach($baner as $row)
+        <li data-target="#carouselExampleIndicators" data-slide-to="{{$loop->index}}"></li>
+        @endforeach
     </ol>
     <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img class="d-block w-100" src="{{asset('storage')}}/images/imgbaner/index.png-1605801497.png" >
-        </div>
         @foreach($baner as $row)
         <div class="carousel-item">
-            <img class="d-block w-100" src="{{asset('storage')}}/images/imgbaner/{{$row->gambar}}" >
+            <img class="d-block w-100" src="{{asset('storage')}}/images/imgbaner/{{$row->gambar}}">
         </div>
         @endforeach
     </div>
@@ -44,18 +41,9 @@ Gown
     <button data-filter=".ball">Ball Gown</button>
 </div>
 <div class="image-gallery">
-@foreach($gaun as $row)
-    <a href="{{asset('storage')}}/images/imggaun/{{$row->gambar}}" data-lightbox="example-set" data-title="{{$row->jenis}}"><img class="example-image mermaid" src="{{asset('storage')}}/images/imggaun/{{$row->gambar}}" alt="" /><span></span></a>
-@endforeach
-    <!-- <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
-    <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
-    <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
-    <a href="storage/slider/gbr1.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image mermaid" src="storage/slider/gbr1.png" alt="" /><span></span></a>
-    <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
-    <a href="storage/slider/gbr1.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image mermaid" src="storage/slider/gbr1.png" alt="" /><span></span></a>
-    <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
-    <a href="storage/slider/gbr1.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image mermaid" src="storage/slider/gbr1.png" alt="" /><span></span></a>
-    <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a> -->
+    @foreach($gaun as $row)
+    <a href="{{asset('storage')}}/images/imggaun/{{$row->gambar}}" data-lightbox="example-set" data-title="{{$row->nama}}"><img class="example-image {{$row->jenis}}" src="{{asset('storage')}}/images/imggaun/{{$row->gambar}}" alt="" /><span></span></a>
+    @endforeach
 </div>
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 
@@ -66,6 +54,11 @@ Gown
 <!-- <script src="https://unpkg.com/masonry-layout@4/dist/masonry.pkgd.min.js"></script> -->
 <script>
     $(document).ready(function() {
+
+        $('.carousel-indicators').children(':first-child').addClass('active');
+        $('.carousel-inner').children(':first-child').addClass('active');
+
+
         var isIsotopeInit = false;
 
         lightbox.option({
