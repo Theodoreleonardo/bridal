@@ -3,27 +3,19 @@
 MakeUp
 @endsection
 
-<?php
-// foreach($gaun as $row){
-//     echo $row->gambar;
-// }
-?>
 
 <link rel="stylesheet" href="{{ asset('css/makeup.css') }}">
 @section('content')
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        @foreach($baner as $row)
+        <li data-target="#carouselExampleIndicators" data-slide-to="{{$loop->index}}"></li>
+        @endforeach
     </ol>
     <div class="carousel-inner">
-        <div class="carousel-item active">
-            <img class="d-block w-100" src="storage/slider/ntr1.jpg" alt="First slide">
-        </div>
         @foreach($baner as $row)
         <div class="carousel-item">
-            <img class="d-block w-100" src="{{asset('storage')}}/images/imgbaner/{{$row->gambar}}" >
+            <img class="d-block w-100" src="{{asset('storage')}}/images/imgbaner/{{$row->gambar}}">
         </div>
         @endforeach
     </div>
@@ -51,18 +43,9 @@ MakeUp
     </div>
 </div>
 <div class="image-gallery">
-@foreach($makeup as $row)
-    <a href="{{asset('storage')}}/images/imgmakeup/{{$row->gambar}}" data-lightbox="example-set" data-title="{{$row->jenis}}"><img class="example-image mermaid" src="{{asset('storage')}}/images/imgmakeup/{{$row->gambar}}" alt="" /><span></span></a>
+    @foreach($makeup as $row)
+    <a href="{{asset('storage')}}/images/imgmakeup/{{$row->gambar}}" data-lightbox="example-set" data-title="{{$row->style}}"><img class="example-image {{$row->style}}" src="{{asset('storage')}}/images/imgmakeup/{{$row->gambar}}" alt="" /><span></span></a>
     @endforeach
-    <!-- <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="holy"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
-    <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="holy"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
-    <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="holy"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
-    <a href="storage/slider/gbr1.png" data-lightbox="example-set" data-title="holy"><img class="example-image mermaid" src="storage/slider/gbr1.png" alt="" /><span></span></a>
-    <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="holy"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
-    <a href="storage/slider/gbr1.png" data-lightbox="example-set" data-title="holy"><img class="example-image mermaid" src="storage/slider/gbr1.png" alt="" /><span></span></a>
-    <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="prewedding"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
-    <a href="storage/slider/gbr1.png" data-lightbox="example-set" data-title="prewedding"><img class="example-image mermaid" src="storage/slider/gbr1.png" alt="" /><span></span></a>
-    <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="prewedding"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a> -->
 </div>
 
 <script src="{{ asset('lightbox2/dist/js/lightbox.min.js') }}"></script>
@@ -71,6 +54,10 @@ MakeUp
 <script src="{{ asset('js/masonry.pkgd.min.js') }}"></script>
 <script>
     $(document).ready(function() {
+
+        $('.carousel-indicators').children(':first-child').addClass('active');
+        $('.carousel-inner').children(':first-child').addClass('active');
+
         var isIsotopeInit = false;
 
         lightbox.option({
@@ -115,23 +102,39 @@ MakeUp
     function dropContent(a) {
         if (a == 1) {
             var txt1 =
-                '<li ><a href="#">Prewedding</a></li>' +
-                '<li ><a href="#">Holy Matrimony</a></li>' +
-                '<li ><a href="#">Reception</a></li>';
+                '<button data-filter=".Prewedding">Prewedding</button><br>' +
+                '<button data-filter=".Holy">Holy Matrimony</button><br>' +
+                '<button data-filter=".Reception">Reception</button>';
+            // '<li data-filter=".Prewedding"><a href="#menu">Prewedding</a></li>' +
+            // '<li data-filter=".Prewedding"><a href="#menu">Holy Matrimony</a></li>' +
+            // '<li data-filter=".Prewedding"><a href="#menu">Reception</a></li>';
         } else if (a == 2) {
-            var txt1 = '<li ><a href="#">Birthday</a></li>' +
-                '<li ><a href="#">Prom</a></li>' +
-                '<li ><a href="#">Graduation</a></li>' +
-                '<li ><a href="#">Maternity</a></li>' +
-                '<li ><a href="#">Family</a></li>' +
-                '<li ><a href="#">Mom</a></li>' +
-                '<li ><a href="#">Bridesmaid</a></li>';
+            var txt1 =
+
+                '<button data-filter=".Birthday">Birthday</button><br>' +
+                '<button data-filter=".Prom">Prom</button><br>' +
+                '<button data-filter=".Graduation">Graduation</button><br>' +
+                '<button data-filter=".Maternity">Maternity</button><br>' +
+                '<button data-filter=".Family">Family</button><br>' +
+                '<button data-filter=".Mom">Mom</button><br>' +
+                '<button data-filter=".Bridesmaid">Bridesmaid</button><br>';
+
+            // '<li data-filter=".Birthday"><a href="#menu">Birthday</a></li>' +
+            // '<li data-filter=".Birthday"><a href="#menu">Prom</a></li>' +
+            // '<li ><a href="#menu">Graduation</a></li>' +
+            // '<li ><a href="#menu">Maternity</a></li>' +
+            // '<li ><a href="#menu">Family</a></li>' +
+            // '<li ><a href="#menu">Mom</a></li>' +
+            // '<li ><a href="#menu">Bridesmaid</a></li>';
 
         } else {
-            var txt1 = '<li ><a href="#">Kids</a></li>' +
-                '<li ><a href="#">Man</a></li>' +
-                '<li ><a href="#">Woman</a></li>';
-
+            var txt1 =
+                '<button data-filter=".Kids">Kids</button><br>' +
+                '<button data-filter=".Man">Man</button><br>' +
+                '<button data-filter=".Woman">Woman</button><br>';
+            // '<li ><a href="#menu">Kids</a></li>' +
+            // '<li ><a href="#menu">Man</a></li>' +
+            // '<li ><a href="#menu">Woman</a></li>';
         }
 
         var id = '.' + a;
