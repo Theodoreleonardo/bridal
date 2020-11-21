@@ -121,6 +121,7 @@ html {
 
 .drop-list {
     padding: 0;
+    position: absolute;
     list-style-type: none !important;
     text-align: center;
     background-color: black;
@@ -148,6 +149,7 @@ html {
     color: white;
     border: none;
     outline: none;
+    font-size: 10px;
 }
 
 .drop-list button:hover {
@@ -178,6 +180,9 @@ html {
     height: 0;
 }
 
+.drop-content .asd {
+    margin-top: -10px;
+}
 /* //////////////////////////////////////////////////////////////////////////////// tablet */
 @media (min-width: 578px) {
     .navbar-brand,
@@ -247,6 +252,10 @@ html {
     .image-gallery img {
         width: 300px;
         height: 300px;
+    }
+
+    .drop-content .asd {
+        margin-top: -0px;
     }
 }
 

@@ -3,9 +3,15 @@
 @section('title','Web Bridal')
 
 @section('container')
+<style>
+  h1,
+  li {
+    text-align: center;
+  }
+</style>
 <div class="contianer">
   <div class="row">
-    <div class="col-10">
+    <div class="col-sm-5 ml-auto mr-auto">
       <h1>Make Up</h1>
       <table class="table">
         @if (session('Status'))

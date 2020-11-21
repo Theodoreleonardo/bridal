@@ -11,12 +11,11 @@
                 @csrf
                 <div class="form-group">
                     <label @error('gambar') class="text-danger" @enderror>Gambar @error('gambar')
-    {{$message}} @enderror</label>
+                        {{$message}} @enderror</label>
                     <input type="file" id="gambar" name="gambar[]" value="" multiple="true " class="form-control @error('gambar') is-invalid @enderror">
                 </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
-
         </div>
     </div>
 </div>

@@ -37,7 +37,7 @@ MakeUp
         <ul class="drop-list">
         </ul>
     </div>
-    <div class="3">
+    <div class="3 asd">
         <ul class="drop-list">
         </ul>
     </div>
@@ -59,7 +59,7 @@ MakeUp
         $('.carousel-inner').children(':first-child').addClass('active');
 
         var isIsotopeInit = false;
-
+        var filterValue = "Prewedding";
         lightbox.option({
             'resizeDuration': 200,
             'wrapAround': true,
@@ -80,7 +80,7 @@ MakeUp
         $('.filter-button-group').on('click', 'button', function() {
             $(".filter-button-group button").removeClass('active');
             $(this).addClass('active');
-            var filterValue = $(this).attr('data-filter');
+            filterValue = $(this).attr('data-filter');
             $grid.isotope({
                 filter: filterValue
             });
@@ -90,7 +90,9 @@ MakeUp
             var target = event.target.id;
             var a = $('.drop-content .active').length
             if (a == 0 && (target == 1 || target == 2 || target == 3)) {
-                dropContent(target);
+                var wid = $('#' + target).parent().width();
+                var pos = $('#' + target).parent().position().left;
+                dropContent(target, wid, pos);
             } else {
                 $('.drop-content .active ul').empty();
                 $('.drop-content .active').removeClass('active');
@@ -99,7 +101,7 @@ MakeUp
 
     });
 
-    function dropContent(a) {
+    function dropContent(a, b, c) {
         if (a == 1) {
             var txt1 =
                 '<button data-filter=".Prewedding">Prewedding</button><br>' +
@@ -140,6 +142,10 @@ MakeUp
         var id = '.' + a;
         var status = $(id).addClass('active');
         $('.drop-content ' + id + ' ul').append(txt1);
+        $('.drop-content ' + id + ' ul').width(b);
+        $('.drop-content ' + id + ' ul').css({
+            left: c
+        });
     }
 </script>
 @endsection
