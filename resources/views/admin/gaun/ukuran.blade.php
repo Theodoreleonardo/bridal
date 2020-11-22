@@ -28,13 +28,14 @@
                   {{$message}} @enderror</label>
               </td>
               <td>
-                <textarea type="Text" value="{{old('deskripsi')}}" class="form-control @error('nama') is-invalid @enderror" id="deskripsi" placeholder="masukan deskripsi" name="deskripsi"></textarea>
+                <textarea type="Text" value="{{old('deskripsi')}}" class="form-control @error('nama') is-invalid @enderror" id="deskripsi" placeholder="masukan deskripsi" name="deskripsi">
+                </textarea>
               </td>
             </tr>
             <tr>
               <td>
                 <button type="submit" class="btn btn-primary">Simpan</button>
-                <!-- <a href="/gaun" class="badge badge-danger">Kembali</a> -->
+                <a href="{{$url}}" class="btn btn-danger">Kembali</a>
               </td>
             </tr>
           </table>

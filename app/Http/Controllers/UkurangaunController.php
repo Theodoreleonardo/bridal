@@ -26,12 +26,9 @@ class UkurangaunController extends Controller
      */
     public function create($id)
     {
-        //
-        // $gaun = DB::table('gauns')->get();
-        // foreach ($gaun as $row){
-        //     $data = $row->id;
-        // }
-        return view('admin.gaun.ukuran', ['id' => $id])->with('Status', 'Berhasil Ditambah Dan masukan Ukuran');
+        $url = url()->previous();
+        //dd($url);
+        return view('admin.gaun.ukuran', ['id' => $id], ['url' => $url]);
     }
 
     /**
@@ -73,7 +70,8 @@ class UkurangaunController extends Controller
      */
     public function edit(Ukurangaun $ukurangaun)
     {
-        return view('admin.gaun.editukuran', ['data' => $ukurangaun]);
+        $url = url()->previous();
+        return view('admin.gaun.editukuran', ['data' => $ukurangaun], ['url' => $url]);
         //
     }
 

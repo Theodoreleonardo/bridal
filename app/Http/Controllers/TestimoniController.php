@@ -40,19 +40,24 @@ class TestimoniController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $data2 = $request;
-
+        
         $files = $request->file('gambar');
+        $check = ['gambar' => $files]; 
         // foreach ($files as $row) {
         //     $asd = $row;
 
         //     dd($asd);
         // }
-       
 
-        $validatedData = $request->validate([
-            'gambar' => 'required|image',
+           // dd($check);
+            //dd($request->all());
+        // $validatedData = $request->validate([
+        //     'gambar' => 'required|image',
+        // ]);
+
+        $this->validate($request,[
+            'gambar' => 'required',
+            'gambar.*' => 'image'
         ]);
 
             foreach($files as $row){

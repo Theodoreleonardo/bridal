@@ -139,6 +139,14 @@ class MakeupController extends Controller
             'gambar' => 'required|image',
         ]);
 
+        if ($request->jenis == 'Wedding') {
+            $route = '1';
+        } else if ($request->jenis == 'Party') {
+            $route = '2';
+        } else if ($request->jenis == 'Commercial Photoshoot') {
+            $route = '3';
+        }
+
         Storage::disk('local')->delete('public/images/imgmakeup/' . $makeup->gambar);
        
         $imgname = $request->gambar->getClientOriginalName() . '-' . time()
@@ -152,7 +160,7 @@ class MakeupController extends Controller
                 'gambar' => $imgname,
             ]);
 
-        return redirect('/makeup')->with('Status', 'Selesai update');
+        return redirect('admin/makeup/'.$route)->with('Status', 'Selesai update');
     }
 
     /**

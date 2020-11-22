@@ -34,7 +34,7 @@ class GaunController extends Controller
     }
     public function store(Request $request)
     {
-        //dd($request);
+       // dd($request->all());
         $validatedData = $request->validate([
             'nama' => 'required',
             'jenis' => 'required',
@@ -77,7 +77,9 @@ class GaunController extends Controller
      */
     public function edit(Gaun $gaun)
     {
-        return view('admin.gaun.edit', ['gaun' => $gaun]);
+
+        $url = url()->previous();
+        return view('admin.gaun.edit', ['gaun' => $gaun],['url' => $url]);
         //
     }
 

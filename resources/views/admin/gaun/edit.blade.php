@@ -56,6 +56,7 @@
             <tr>
               <td>
                 <button type="Simpan" class="btn btn-primary">Submit</button>
+                <a href="{{$url}}" class="btn btn-danger">Kembali</a>
               </td>
             </tr>
           </table>

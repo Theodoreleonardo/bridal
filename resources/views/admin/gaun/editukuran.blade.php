@@ -33,12 +33,13 @@
                   {{$message}} @enderror</label>
               </td>
               <td>
-                <input type="Text" value="{{$data->deskripsi}}" class="form-control @error('nama') is-invalid @enderror" id="deskripsi" placeholder="masukan deskripsi" name="deskripsi"></input>
+              <textarea type="Text" value="" class="form-control @error('nama') is-invalid @enderror" id="deskripsi" placeholder="masukan deskripsi" name="deskripsi">{{$data->deskripsi}}</textarea>
               </td>
             </tr>
             <tr>
               <td>
                 <button type="submit" class="btn btn-primary">Simpan</button>
+                <a href="{{$url}}" class="btn btn-danger">Kembali</a>
               </td>
             </tr>
           </table>
