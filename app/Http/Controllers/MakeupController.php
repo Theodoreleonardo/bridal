@@ -6,6 +6,8 @@ use App\Models\Makeup;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use App\Image;
+use Intervention\Image\ImageManagerStatic as Images;
 
 class MakeupController extends Controller
 {
@@ -54,10 +56,14 @@ class MakeupController extends Controller
             'style' => 'required',
             'gambar' => 'required|image',
         ]);
-
+        //Images::make('$request->gambar')->resize(10, 20);
         $imgname = $request->gambar->getClientOriginalName() . '-' . time()
         . '.' . $request->gambar->extension();
-        $request->gambar->move(storage_path('app/public/images/imgmakeup'), $imgname);
+        //$request->gambar->move(storage_path('app/public/images/imgmakeup'), $imgname);
+        $path = storage_path('app\public\images\imgmakeup'. $imgname);
+         Images::make($request->gambar)->resize(300, 200)->save($path);
+        // dd($request->gambar);
+
 
         if ($request->jenis == 'Wedding'){
             $id = '1';
@@ -68,6 +74,7 @@ class MakeupController extends Controller
         else if ($request->jenis == 'Commercial Photoshoot'){
             $id = '3';
         }
+
 
         Makeup::create([
             'jenis' => $request->jenis,
