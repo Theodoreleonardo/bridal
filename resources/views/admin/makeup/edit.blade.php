@@ -84,16 +84,13 @@ if ($makeup->jenis == 'Wedding') {
               </td>
               <td>
                 <div class="col-sm-12 gambar">
-                  <img src="storage/slider/gbr2.png" class="img-tumbnail img-preview" width="200px">
+                  <img src="{{asset('storage')}}/slider/gbr1.png" class="img-tumbnail img-preview" width="200px">
                 </div>
               </td>
             </tr>
           </table>
         </div>
       </form>
-
-
-
     </div>
   </div>
 </div>

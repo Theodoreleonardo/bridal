@@ -6,6 +6,8 @@ use App\Models\Testimoni;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use App\Image;
+use Intervention\Image\ImageManagerStatic as Images;
 
 class TestimoniController extends Controller
 {
@@ -64,8 +66,9 @@ class TestimoniController extends Controller
                
         $imgname = $row->getClientOriginalName() . '-' . time()
                 . '.' . $row->extension();
-        $row->move(storage_path('app/public/images/imgtestimoni'), $imgname);
-
+        //$row->move(storage_path('app/public/images/imgtestimoni'), $imgname);
+        $path = storage_path('app/public/images/imgtestimoni//'. $imgname);
+        Images::make($row)->resize(700, 500)->save($path);
         Testimoni::create([
             'gambar' => $imgname,
 

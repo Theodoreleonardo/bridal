@@ -7,6 +7,8 @@ use App\Models\Ukurangaun;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use App\Image;
+use Intervention\Image\ImageManagerStatic as Images;
 
 class GaunController extends Controller
 {
@@ -43,7 +45,9 @@ class GaunController extends Controller
 
         $imgname = $request->gambar->getClientOriginalName() . '-' . time()
                 . '.' . $request->gambar->extension();
-        $request->gambar->move(storage_path('app/public/images/imggaun'), $imgname);
+        //$request->gambar->move(storage_path('app/public/images/imggaun'), $imgname);
+        $path = storage_path('app/public/images/imggaun//'. $imgname);
+        Images::make($request->gambar)->resize(700, 500)->save($path);
 
         Gaun::create([
             'nama' => $request->nama,
@@ -103,8 +107,9 @@ class GaunController extends Controller
        
         $imgname = $request->gambar->getClientOriginalName() . '-' . time()
         . '.' . $request->gambar->extension();
-        $request->gambar->move(storage_path('app/public/images/imggaun'), $imgname);
-
+        //$request->gambar->move(storage_path('app/public/images/imggaun'), $imgname);
+        $path = storage_path('app/public/images/imggaun//'. $imgname);
+        Images::make($request->gambar)->resize(700, 500)->save($path);   
         
         Gaun::where('id', $gaun->id)
         ->update([

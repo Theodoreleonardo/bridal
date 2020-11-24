@@ -60,8 +60,8 @@ class MakeupController extends Controller
         $imgname = $request->gambar->getClientOriginalName() . '-' . time()
         . '.' . $request->gambar->extension();
         //$request->gambar->move(storage_path('app/public/images/imgmakeup'), $imgname);
-        $path = storage_path('app\public\images\imgmakeup'. $imgname);
-         Images::make($request->gambar)->resize(300, 200)->save($path);
+        $path = storage_path('app\public\images\imgmakeup//'. $imgname);
+         Images::make($request->gambar)->resize(700, 500)->save($path);
         // dd($request->gambar);
 
 
@@ -158,7 +158,10 @@ class MakeupController extends Controller
        
         $imgname = $request->gambar->getClientOriginalName() . '-' . time()
         . '.' . $request->gambar->extension();
-        $request->gambar->move(storage_path('app/public/images/imgmakeup'), $imgname);
+        //$request->gambar->move(storage_path('app/public/images/imgmakeup'), $imgname);
+        
+        $path = storage_path('app\public\images\imgmakeup//'. $imgname);
+        Images::make($request->gambar)->resize(700, 500)->save($path);
         //
         Makeup::where('id', $makeup->id)
             ->update([
