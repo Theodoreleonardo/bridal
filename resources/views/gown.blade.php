@@ -40,8 +40,13 @@ Gown
     <button data-filter=".a-line">A line</button>
     <button data-filter=".ball">Ball Gown</button>
 </div>
+@foreach($gaun[1] as $row)
+{{$row->id_gauns}}
+{{$row->ukuran}}
+{{$row->deskripsi}}
+@endforeach
 <div class="image-gallery">
-    @foreach($gaun as $row)
+    @foreach($gaun[0] as $row)
     <a href="{{asset('storage')}}/images/imggaun/{{$row->gambar}}" data-lightbox="example-set" data-title="{{$row->nama}}"><img class="example-image {{$row->jenis}}" src="{{asset('storage')}}/images/imggaun/{{$row->gambar}}" alt="" /><span></span></a>
     @endforeach
 </div>

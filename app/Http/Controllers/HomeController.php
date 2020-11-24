@@ -24,7 +24,8 @@ class HomeController extends Controller
 
     public function gown()
     {
-        $gaun = DB::table('gauns')->get();
+        $gaun[0] = DB::table('gauns')->get();
+        $gaun[1] = DB::table('ukurangauns')->get();
         $ukuran = DB::table('ukurangauns')->get();
         $baner = DB::table('baners')->where('kategori','Gaun')->get();
         return view('gown',['gaun' => $gaun],['baner' => $baner]);
