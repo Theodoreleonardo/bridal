@@ -6,6 +6,8 @@ use App\Models\Baner;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
+use App\Image;
+use Intervention\Image\ImageManagerStatic as Images;
 
 class BanerController extends Controller
 {
@@ -50,8 +52,9 @@ class BanerController extends Controller
         
                 $imgname = $request->gambar->getClientOriginalName() . '-' . time()
                         . '.' . $request->gambar->extension();
-                $request->gambar->move(storage_path('app/public/images/imgbaner'), $imgname);
-        
+                //$request->gambar->move(storage_path('app/public/images/imgbaner'), $imgname);
+                $path = storage_path('app/public/images/imgbaner//'. $imgname);
+                Images::make($request->gambar)->resize(700, 500)->save($path);
                 Baner::create([
                     'gambar' => $imgname,
                     'kategori' => $request->kategori,
@@ -102,8 +105,9 @@ class BanerController extends Controller
        
         $imgname = $request->gambar->getClientOriginalName() . '-' . time()
         . '.' . $request->gambar->extension();
-        $request->gambar->move(storage_path('app/public/images/imgbaner'), $imgname);
-
+        //$request->gambar->move(storage_path('app/public/images/imgbaner'), $imgname);
+        $path = storage_path('app/public/images/imgbaner//'. $imgname);
+        Images::make($request->gambar)->resize(700, 500)->save($path);
         Baner::where('id', $baner->id)
         ->update([
             'kategori'=>$request->kategori,
