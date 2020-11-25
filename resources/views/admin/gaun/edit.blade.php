@@ -8,6 +8,11 @@
     width: 70%;
   }
 
+  img {
+    width: 200px;
+    height: 200px;
+  }
+
   option {
     font-size: 12px;
     width: 70% !important;
@@ -50,13 +55,18 @@
                   {{$message}} @enderror</label>
               </td>
               <td>
-                <input type="file" value="" class="form-control @error('gambar') is-invalid @enderror" id="gambar" name="gambar">
+                <input type="file" value="" class="form-control @error('gambar') is-invalid @enderror" id="gambar" name="gambar" onchange="preview()">
               </td>
             </tr>
             <tr>
               <td>
                 <button type="Simpan" class="btn btn-primary">Submit</button>
                 <a href="{{$url}}" class="btn btn-danger">Kembali</a>
+              </td>
+              <td>
+                <div class="col-sm-12 gambar">
+                  <img src="storage/slider/gbr2.png" class="img-tumbnail img-preview">
+                </div>
               </td>
             </tr>
           </table>

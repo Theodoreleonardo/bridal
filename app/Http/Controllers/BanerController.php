@@ -43,25 +43,25 @@ class BanerController extends Controller
     public function store(Request $request)
     {
         //
-                //dd($request);
-                $validatedData = $request->validate([
-                    'gambar' => 'required|image',
-                    'kategori' => 'required',
-                    
-                ]);
-        
-                $imgname = $request->gambar->getClientOriginalName() . '-' . time()
-                        . '.' . $request->gambar->extension();
-                //$request->gambar->move(storage_path('app/public/images/imgbaner'), $imgname);
-                $path = storage_path('app/public/images/imgbaner//'. $imgname);
-                Images::make($request->gambar)->resize(700, 500)->save($path);
-                Baner::create([
-                    'gambar' => $imgname,
-                    'kategori' => $request->kategori,
-        
-                ]);
-                
-                return redirect('/baners')->with('Status', 'Berhasil Ditambah');
+        //dd($request);
+        $validatedData = $request->validate([
+            'gambar' => 'required|image',
+            'kategori' => 'required',
+
+        ]);
+
+        $imgname = $request->gambar->getClientOriginalName() . '-' . time()
+            . '.' . $request->gambar->extension();
+        $request->gambar->move(storage_path('app/public/images/imgbaner'), $imgname);
+        // $path = storage_path('app/public/images/imgbaner//'. $imgname);
+        // Images::make($request->gambar)->resize(700, 500)->save($path);
+        Baner::create([
+            'gambar' => $imgname,
+            'kategori' => $request->kategori,
+
+        ]);
+
+        return redirect('/baners')->with('Status', 'Berhasil Ditambah');
     }
 
     /**
@@ -102,17 +102,17 @@ class BanerController extends Controller
             'gambar' => 'required|image',
         ]);
         Storage::disk('local')->delete('public/images/imgbaner/' . $baner->gambar);
-       
+
         $imgname = $request->gambar->getClientOriginalName() . '-' . time()
-        . '.' . $request->gambar->extension();
+            . '.' . $request->gambar->extension();
         //$request->gambar->move(storage_path('app/public/images/imgbaner'), $imgname);
-        $path = storage_path('app/public/images/imgbaner//'. $imgname);
+        $path = storage_path('app/public/images/imgbaner//' . $imgname);
         Images::make($request->gambar)->resize(700, 500)->save($path);
         Baner::where('id', $baner->id)
-        ->update([
-            'kategori'=>$request->kategori,
-            'gambar'=> $imgname,
-        ]);
+            ->update([
+                'kategori' => $request->kategori,
+                'gambar' => $imgname,
+            ]);
         return redirect('/baners')->with('Status', 'Selesai update Mantap jiwa');
     }
 
@@ -125,7 +125,7 @@ class BanerController extends Controller
     public function destroy(Baner $baner)
     {
         //
-                //$data = $gaun->id;
+        //$data = $gaun->id;
         Baner::destroy($baner->id);
         //Storage::delete($gaun->id);
         Storage::disk('local')->delete('public/images/imgbaner/' . $baner->gambar);

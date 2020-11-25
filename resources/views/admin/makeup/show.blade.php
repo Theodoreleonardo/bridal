@@ -35,7 +35,7 @@
   <div class="row">
     <div class="col-sm-8  ml-auto mr-auto">
       <h1 style="text-align: center;">Wedding</h1>
-      <a href="/makeup/create/{{1}}" class="btn btn-info">Tambar Data Wedding</a>
+      <a href="/makeup/create/{{1}}" class="btn btn-info">Tambah Data Wedding</a>
       <a href="/makeup" class="btn btn-danger">Kembali</a>
       @if (session('Status'))
       <div class="alert alert-success">

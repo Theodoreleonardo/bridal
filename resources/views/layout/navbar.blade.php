@@ -10,7 +10,7 @@
                 <a class="nav-link" href="/gown">Gown</a>
                 <a class="nav-link" href="/makeups">Make Up</a>
                 <a class="nav-link" href="/testi">Testimonial</a>
-                <a class="btn btn-primary tombol page-scroll" href="#contact-us">Contact Us</a>
+                <a class="btn btn-primary tombol page-scroll" href="">Contact Us</a>
             </div>
         </div>
     </div>
@@ -32,4 +32,14 @@
             $('.animated-icon3').toggleClass('open');
         });
     });
+
+    $('.tombol').on('click', function() {
+        var cek = $('#contact-us')
+
+        if (cek.length == 1) {
+            $(this).attr('href', '#contact-us');
+        } else {
+            $(this).attr('href', '/#contact-us');
+        }
+    })
 </script>

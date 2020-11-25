@@ -39,7 +39,7 @@
                                     <a class="nav-link" href="{{ url('/gaun') }}">Gaun</a>
                               </li>
                               <li class="nav-item">
-                                    <a class="nav-link" href="{{ url('/baners') }}">Baners</a>
+                                    <a class="nav-link" href="{{ url('/baners') }}">Banners</a>
                               </li>
                               <!-- <li class="nav-item">
                                     <a class="nav-link" href="{{ url('/galeri') }}">Galeri</a>

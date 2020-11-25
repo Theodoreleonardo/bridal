@@ -7,14 +7,14 @@ Testimonial
 @section('content')
 <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
-        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        @foreach($baner as $row)
+        <li data-target="#carouselExampleIndicators" data-slide-to="{{$loop->index}}"></li>
+        @endforeach
     </ol>
     <div class="carousel-inner">
         @foreach($baner as $row)
-        <div class="carousel-item active">
-            <img class="d-block w-100" src="{{asset('storage')}}/images/imgbaner/{{$row->gambar}}" alt="First slide">
+        <div class="carousel-item">
+            <img class="d-block w-100" src="{{asset('storage')}}/images/imgbaner/{{$row->gambar}}">
         </div>
         @endforeach
 
@@ -25,7 +25,7 @@ Testimonial
     @foreach($testi as $row)
     <a href="{{asset('storage')}}/images/imgtestimoni/{{$row->gambar}}" data-lightbox="example-set" data-title="Testimoni"><img class="example-image mermaid" src="{{asset('storage')}}/images/imgtestimoni/{{$row->gambar}}" alt="" /><span></span></a>
     @endforeach
-    <a href="storage/slider/ntr1.jpg" data-lightbox="example-set" data-title="mermaid"><img class="example-image mermaid" src="storage/slider/ntr1.jpg" alt="" /><span></span></a>
+    <!-- <a href="storage/slider/ntr1.jpg" data-lightbox="example-set" data-title="mermaid"><img class="example-image mermaid" src="storage/slider/ntr1.jpg" alt="" /><span></span></a>
     <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
     <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
     <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
@@ -34,13 +34,17 @@ Testimonial
     <a href="storage/slider/gbr1.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image mermaid" src="storage/slider/gbr1.png" alt="" /><span></span></a>
     <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
     <a href="storage/slider/gbr1.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image mermaid" src="storage/slider/gbr1.png" alt="" /><span></span></a>
-    <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a>
+    <a href="storage/slider/gbr2.png" data-lightbox="example-set" data-title="mermaid"><img class="example-image ball" src="storage/slider/gbr2.png" alt="" /><span></span></a> -->
 </div>
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 
 <script src="{{ asset('lightbox2/dist/js/lightbox.min.js') }}"></script>
 <script>
     $(document).ready(function() {
+
+        $('.carousel-indicators').children(':first-child').addClass('active');
+        $('.carousel-inner').children(':first-child').addClass('active');
+
         lightbox.option({
             'resizeDuration': 200,
             'wrapAround': true,

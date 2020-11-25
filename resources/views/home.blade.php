@@ -182,14 +182,19 @@ Home
         // });
 
         $('.sosmed').mouseenter(function() {
-            var x = '.' + $(this).children('a').children('img').attr('alt');
-            $(x).children('h2').attr('style', 'display: block !important');
+
+            var wid = $(window).width();
+            if (wid > 577) {
+                var x = '.' + $(this).children('a').children('img').attr('alt');
+                $(x).children('h2').attr('style', 'display: block !important');
+            }
         });
 
         $('.sosmed').mouseleave(function() {
             var x = '.' + $(this).children('a').children('img').attr('alt');
             $(x).children('h2').attr('style', 'display: none !important');
         });
+
     });
 
 

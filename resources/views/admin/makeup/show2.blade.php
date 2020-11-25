@@ -33,7 +33,7 @@
   <div class="row">
     <div class="col-sm-8 ml-auto mr-auto">
       <h1 style="text-align: center; margin-bottom: 20px">Commercial Photoshoot</h1>
-      <a href="/makeup/create/3" class="btn btn-info">Tambar Data Photoshhot</a>
+      <a href="/makeup/create/3" class="btn btn-info">Tambah Data Photoshhot</a>
       <a href="/makeup" class="btn btn-danger">Kembali</a>
       @if (session('Status'))
       <div class="alert alert-success">

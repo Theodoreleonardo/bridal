@@ -75,13 +75,18 @@
                   {{$message}} @enderror</label>
               </td>
               <td>
-                <input type="file" value="" class="form-control @error('gambar') is-invalid @enderror" id="gambar" name="gambar">
+                <input type="file" value="" class="form-control @error('gambar') is-invalid @enderror" id="gambar" name="gambar" onchange="preview()">
               </td>
             </tr>
             <tr>
               <td>
                 <button type="submit" class="btn btn-primary">Simpan</button>
                 <a href="/gaun" class="btn btn-danger">Kembali</a>
+              </td>
+              <td>
+                <div class="col-sm-12 gambar">
+                  <img src="storage/slider/gbr2.png" class="img-tumbnail img-preview">
+                </div>
               </td>
             </tr>
           </table>
