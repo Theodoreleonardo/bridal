@@ -41,7 +41,6 @@ Gown
     <button data-filter=".ball">Ball Gown</button>
 </div>
 @foreach($gaun[1] as $row)
-{{$row->id_gauns}}
 {{$row->ukuran}}
 {{$row->deskripsi}}
 @endforeach
