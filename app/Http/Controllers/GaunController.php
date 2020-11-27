@@ -55,21 +55,21 @@ class GaunController extends Controller
          if($width > 750 || $height > 750 || $width == 700 && $height == 700){
     
             if ($width > $height) {
-                $path = storage_path('app\public\images\imgmakeup//'. $imgname); //landscap
+                $path = storage_path('app\public\images\imggaun//'. $imgname); //landscap
                 Images::make($request->gambar)->resize(700, 500)->save($path);
                 } 
                 elseif ($selisih <= 100){
     
-                    $path = storage_path('app\public\images\imgmakeup//'. $imgname); //landscap
+                    $path = storage_path('app\public\images\imggaun//'. $imgname); //landscap
                     Images::make($request->gambar)->resize(500, 500)->save($path);
                     } 
     
                 else {
-                $path = storage_path('app\public\images\imgmakeup//'. $imgname); //potret
+                $path = storage_path('app\public\images\imggaun//'. $imgname); //potret
                 Images::make($request->gambar)->resize(400, 500)->save($path);
                 }
             }else{
-           $request->gambar->move(storage_path('app/public/images/imgmakeup'), $imgname);
+           $request->gambar->move(storage_path('app/public/images/imggaun'), $imgname);
     
             }
 
@@ -146,21 +146,21 @@ class GaunController extends Controller
  if($width > 750 || $height > 750 || $width == 700 && $height == 700){
 
     if ($width > $height) {
-        $path = storage_path('app\public\images\imgmakeup//'. $imgname); //landscap
+        $path = storage_path('app\public\images\imggaun//'. $imgname); //landscap
         Images::make($request->gambar)->resize(700, 500)->save($path);
         } 
         elseif ($selisih <= 100){
 
-            $path = storage_path('app\public\images\imgmakeup//'. $imgname); //landscap
+            $path = storage_path('app\public\images\imggaun//'. $imgname); //landscap
             Images::make($request->gambar)->resize(500, 500)->save($path);
             } 
 
         else {
-        $path = storage_path('app\public\images\imgmakeup//'. $imgname); //potret
+        $path = storage_path('app\public\images\imggaun//'. $imgname); //potret
         Images::make($request->gambar)->resize(400, 500)->save($path);
         }
     }else{
-   $request->gambar->move(storage_path('app/public/images/imgmakeup'), $imgname);
+   $request->gambar->move(storage_path('app/public/images/imggaun'), $imgname);
 
     }
         //$request->gambar->move(storage_path('app/public/images/imggaun'), $imgname);

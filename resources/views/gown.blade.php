@@ -40,14 +40,18 @@ Gown
     <button data-filter=".a-line">A line</button>
     <button data-filter=".ball">Ball Gown</button>
 </div>
-@foreach($gaun[1] as $row)
-{{$row->id_gauns}}
-{{$row->ukuran}}
-{{$row->deskripsi}}
-@endforeach
 <div class="image-gallery">
-    @foreach($gaun[0] as $row)
-    <a href="{{asset('storage')}}/images/imggaun/{{$row->gambar}}" data-lightbox="example-set" data-title="{{$row->nama}}"><img class="example-image {{$row->jenis}}" src="{{asset('storage')}}/images/imggaun/{{$row->gambar}}" alt="" /><span></span></a>
+    @foreach($gaun[0] as $row1)
+        @foreach($gaun[1] as $row2)
+            @if($row2->id_gauns == $row1->id)
+            {{$row2->ukuran}}
+            {{$row2->deskripsi}}
+            <?php 
+            $deskrip = $row2->deskripsi;
+            ?>
+            @endif
+        @endforeach
+    <a href="{{asset('storage')}}/images/imggaun/{{$row1->gambar}}" data-lightbox="example-set" data-title="{{$deskrip}}"><img class="example-image {{$row1->jenis}}" src="{{asset('storage')}}/images/imggaun/{{$row1->gambar}}" alt="" /><span></span></a>
     @endforeach
 </div>
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
