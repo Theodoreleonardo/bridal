@@ -71,6 +71,7 @@
             <tr>
               <td>
                 <button type="submit" class="btn btn-primary">Submit</button>
+                <a href="/baners" class="btn btn-danger">Kembali</a>
               </td>
               <td>
                 <div class="col-sm-12 gambar">

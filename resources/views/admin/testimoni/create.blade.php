@@ -60,6 +60,7 @@
             <tr>
               <td>
                 <button type="submit" class="btn btn-primary">Simpan</button>
+                <a href="/testimoni" class="btn btn-danger">Kembali</a>
               </td>
             </tr>
           </table>
