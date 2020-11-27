@@ -59,9 +59,38 @@ class MakeupController extends Controller
         //Images::make('$request->gambar')->resize(10, 20);
         $imgname = $request->gambar->getClientOriginalName() . '-' . time()
         . '.' . $request->gambar->extension();
+
+        list($width, $height) = getimagesize($request->gambar);
+
+            $selisih = $width - $height;
+           // dd$($selisih);
+           $selisih = abs($selisih);
+
+     if($width > 750 || $height > 750 || $width == 700 && $height == 700){
+
+        if ($width > $height) {
+            $path = storage_path('app\public\images\imgmakeup//'. $imgname); //landscap
+            Images::make($request->gambar)->resize(700, 500)->save($path);
+            } 
+            elseif ($selisih <= 100){
+
+                $path = storage_path('app\public\images\imgmakeup//'. $imgname); //landscap
+                Images::make($request->gambar)->resize(500, 500)->save($path);
+                } 
+
+            else {
+            $path = storage_path('app\public\images\imgmakeup//'. $imgname); //potret
+            Images::make($request->gambar)->resize(400, 500)->save($path);
+            }
+        }else{
+       $request->gambar->move(storage_path('app/public/images/imgmakeup'), $imgname);
+
+        }
+
+        
         //$request->gambar->move(storage_path('app/public/images/imgmakeup'), $imgname);
-        $path = storage_path('app\public\images\imgmakeup//'. $imgname);
-         Images::make($request->gambar)->resize(700, 500)->save($path);
+        // $path = storage_path('app\public\images\imgmakeup//'. $imgname);
+        //  Images::make($request->gambar)->resize(700, 500)->save($path);
         // dd($request->gambar);
 
 
@@ -159,9 +188,36 @@ class MakeupController extends Controller
         $imgname = $request->gambar->getClientOriginalName() . '-' . time()
         . '.' . $request->gambar->extension();
         //$request->gambar->move(storage_path('app/public/images/imgmakeup'), $imgname);
-        
-        $path = storage_path('app\public\images\imgmakeup//'. $imgname);
+
+        list($width, $height) = getimagesize($request->gambar);
+
+        $selisih = $width - $height;
+       // dd$($selisih);
+       $selisih = abs($selisih);
+
+ if($width > 750 || $height > 750 || $width == 700 && $height == 700){
+
+    if ($width > $height) {
+        $path = storage_path('app\public\images\imgmakeup//'. $imgname); //landscap
         Images::make($request->gambar)->resize(700, 500)->save($path);
+        } 
+        elseif ($selisih <= 100){
+
+            $path = storage_path('app\public\images\imgmakeup//'. $imgname); //landscap
+            Images::make($request->gambar)->resize(500, 500)->save($path);
+            } 
+
+        else {
+        $path = storage_path('app\public\images\imgmakeup//'. $imgname); //potret
+        Images::make($request->gambar)->resize(400, 500)->save($path);
+        }
+    }else{
+   $request->gambar->move(storage_path('app/public/images/imgmakeup'), $imgname);
+
+    }
+        
+        // $path = storage_path('app\public\images\imgmakeup//'. $imgname);
+        // Images::make($request->gambar)->resize(700, 500)->save($path);
         //
         Makeup::where('id', $makeup->id)
             ->update([
