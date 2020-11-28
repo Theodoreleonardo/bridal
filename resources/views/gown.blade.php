@@ -41,15 +41,18 @@ Gown
     <button data-filter=".ball">Ball Gown</button>
 </div>
 <div class="image-gallery">
-    @foreach($gaun[0] as $row1)
-    @foreach($gaun[1] as $row2)
-    @if($row2->id_gauns == $row1->id)
-    {{$row2->ukuran}}
-    {{$row2->deskripsi}}
-    <a href="{{asset('storage')}}/images/imggaun/{{$row1->gambar}}" data-lightbox="example-set" data-title="{{$row2->ukuran}}"><img class="example-image {{$row1->jenis}}" src="{{asset('storage')}}/images/imggaun/{{$row1->gambar}}" alt="" /><span></span></a>
-    @endif
-    @endforeach
-    @endforeach
+    <?php
+    foreach ($gaun[0] as $row1) {
+        $tmp = '';
+        foreach ($gaun[1] as $row2) {
+            if ($row2->id_gauns == $row1->id) {
+                $tmp .= 'Ukuran : ' . $row2->ukuran . '<br> Deskripsi : ' . $row2->deskripsi . '<br><br>';
+            }
+        }
+        echo "<a href='/storage/images/imggaun/$row1->gambar' data-lightbox='example-set' data-title='$tmp'><img class='example-image $row1->jenis' src='/storage/images/imggaun/$row1->gambar'/></a>";
+    }
+    ?>
+
 </div>
 <button onclick="topFunction()" id="myBtn" title="Go to top">Top</button>
 
@@ -70,7 +73,7 @@ Gown
         lightbox.option({
             'resizeDuration': 200,
             'wrapAround': true,
-            'disableScrolling': true,
+            'disableScrolling': false,
             'positionFromTop': 10,
             'alwaysShowNavOnTouchDevices': true
         })
