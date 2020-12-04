@@ -28,8 +28,7 @@
                   {{$message}} @enderror</label>
               </td>
               <td>
-                <textarea type="Text" value="{{old('deskripsi')}}" class="form-control @error('nama') is-invalid @enderror" id="deskripsi" placeholder="masukan deskripsi" name="deskripsi">
-                </textarea>
+                <textarea type="Text" value="{{old('deskripsi')}}" class="form-control @error('nama') is-invalid @enderror" id="deskripsi" placeholder="masukan deskripsi" name="deskripsi"></textarea>
               </td>
             </tr>
             <tr>
